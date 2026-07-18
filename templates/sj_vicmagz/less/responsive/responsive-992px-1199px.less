@@ -1,0 +1,229 @@
+// Medium devices Desktops 
+// ------------------
+
+/* ------------------------------------*/
+/* 	1. Layout Templates ---------------*/
+/* 	2. Joomla Core      ---------------*/
+/* 	3. Home Page        ---------------*/
+/* 	4. Bonus Page       ---------------*/
+/* 	5. Module           ---------------*/
+/* 	6. k2 Content       ---------------*/
+/*	-----------------------------------*/
+	
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+	div.container {
+		width: 970px;
+	}
+	//Layout-Templates
+	/* 1.Layout Templates ---------------
+	---------------------------------*/
+	.home-sidebar {
+		#yt_wrapper {
+			padding-left: 0;
+		}
+	}
+	#meganavigator .mega-content .mega-content-inner {
+		max-width: 930px;
+	}
+	.k2ItemsBlock.grid .catItemHeaderFooter li.catItemCommentsLink {
+		float: none;
+	}
+	/* 2.Joomla Core ---------------
+	---------------------------------*/
+	.blog {
+		.items-leading .item{
+			.item-image{
+				float: none !important;
+				margin: 0px 0px 20px 0px;
+				display: inline-block;
+			}
+			&.span4,
+			&.span6,
+			&.span3 {
+				.item-image{
+					display: block ;
+					height: 100%;
+					min-width: inherit !important;
+					min-height: inherit !important;
+					.img_caption{
+						width: auto !important;
+					}
+				}
+			}
+				
+		}
+		.items-row .item{
+			.item-image{
+				float: none !important;
+				margin: 0px 0px 20px 0px;
+				display: inline-block;
+				min-height: inherit !important;
+				min-width: inherit !important;
+			}
+			&.col-sm-3,
+			&.col-sm-4,
+			&.col-sm-6 {
+				.item-image{
+					display: block;
+					height: 100%;
+					min-width: inherit !important;
+					min-height: inherit !important;
+					img{
+						max-width: 100% ; 
+						display: block ;
+					}
+					.img_caption{
+						width: auto !important;
+					}
+				}
+			}
+		}
+		   
+		//Feature
+		&.blog-featured {
+			.items-row {
+				.item {
+					.item-image {
+						min-height: inherit !important;
+						min-width: inherit !important;
+						display: block;
+					}
+				}
+			}
+		}
+		   
+	}
+	.item-page {
+		.btn.btn-flat {font-size: 14px;}
+		.dt-list {width: 47%;}
+	}
+
+	/* 3.Home Page ---------------
+	---------------------------------*/
+	
+	
+	/* 4. Bonus Page ---------------
+	---------------------------------*/
+    //page sevices
+	#g-pageservices div.yt-tabs ul.nav-tabs li a{padding: 8px 10px;}
+	
+	/* 5. Module ---------------
+	---------------------------------*/
+	
+	.module .sj-social-media-counts .sc-wrap .sc-item {
+		width: 100%;
+	}
+	/* 6. K2 Content ---------------
+	---------------------------------*/
+}
+@media (max-width: @screen-md-max) {
+	.slideout-menu {
+		z-index: 999;
+	}
+	.module {
+		.flyout-menu.vertical > li, 
+		.flyout-menu.horizontal > li {
+			padding: 10px 20px;
+		}
+	}
+	.home-default, .home-variations {
+		#yt_header {
+			height: auto;
+		}
+		#yt_logo {
+			width: 100%;
+		}
+	}
+	#yt_mainmenu .btn-hamburger {
+		&:hover {
+			.opacity(80);
+		}
+	}
+	#yt_mainmenu {
+		.k2ItemsBlock.grid .catItemHeaderFooter li {
+			display: block;
+			.float-none();
+		}
+	}
+	.most-viewed {
+		.sj-mostviewed {
+			.tab-item-first {
+				background: none;
+				> a {
+					&:before {
+						top: 30px;
+						bottom: 30px;
+						left: 10px;
+						right: 10px;
+					}
+					&:after {
+						top: 20px;
+						bottom: 20px;
+						left: 20px;
+						right: 20px;
+					}
+				}
+				
+			}
+			.mv-tab-content {
+				.tab-item {
+					.tab-content-right {
+						padding: 0;
+					}
+				}
+			}
+		}
+	}
+	
+	.itemListViewList {
+		.itemContainerList {
+			.catItemImageBlock  {
+				padding: 20px 20px 0;
+				margin: 0;
+			}
+		}
+		.media-body {
+			display: block;
+			clear: both;
+			padding: 20px;
+		}
+	}
+	div.tagView {
+		.tagItemImageBlock  {
+			padding: 20px 20px 0;
+			margin: 0;
+		}
+		.media-body {
+			display: block;
+			clear: both;
+			padding: 20px;
+		}
+	}
+	div.userView {
+		.userItemImageBlock  {
+			padding: 20px 20px 0;
+			margin: 0;
+		}
+		.userItemBody {
+			display: block;
+			clear: both;
+			padding: 20px;
+		}
+	}
+	.module {
+		.sj-extra-slider {
+			.owl-controls {
+				.owl-prev {
+					left: 20px;
+				}
+				.owl-next {
+					right: 20px;
+				}
+			}
+		}
+	}
+	.g-pagecontact .el-heading {
+		text-transform: uppercase;
+		font-size: 22px;
+	}
+}

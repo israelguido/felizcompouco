@@ -1,0 +1,96 @@
+/* Instagram photo grid — Feliz com Pouco */
+.fcp-ig {
+	overflow: hidden;
+}
+.fcp-ig__grid {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -2px 12px;
+	padding: 0;
+	list-style: none;
+}
+.fcp-ig__item {
+	box-sizing: border-box;
+	padding: 2px;
+	float: none;
+}
+.fcp-ig--cols-2 .fcp-ig__item { width: 50%; }
+.fcp-ig--cols-3 .fcp-ig__item { width: 33.333%; }
+.fcp-ig--cols-4 .fcp-ig__item { width: 25%; }
+.fcp-ig--cols-6 .fcp-ig__item { width: 16.666%; }
+
+.fcp-ig__link {
+	display: block;
+	position: relative;
+	overflow: hidden;
+	background: #111;
+	aspect-ratio: 1 / 1;
+}
+.fcp-ig__img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: opacity 0.25s ease, transform 0.35s ease;
+}
+.fcp-ig__hover {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-size: 22px;
+	background: rgba(145, 167, 208, 0.55);
+	opacity: 0;
+	transition: opacity 0.25s ease;
+}
+.fcp-ig__link:hover .fcp-ig__img {
+	opacity: 0.85;
+	transform: scale(1.04);
+}
+.fcp-ig__link:hover .fcp-ig__hover {
+	opacity: 1;
+}
+
+.fcp-ig__follow {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 14px;
+	color: #fff !important;
+	text-decoration: none !important;
+	background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.fcp-ig__follow i {
+	font-size: 22px;
+}
+.fcp-ig__follow span {
+	font-weight: 700;
+	font-size: 14px;
+}
+.fcp-ig__follow em {
+	margin-left: auto;
+	font-style: normal;
+	font-size: 12px;
+	opacity: 0.95;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+}
+.fcp-ig__follow:hover {
+	opacity: 0.92;
+	color: #fff !important;
+}
+.fcp-ig__empty {
+	margin: 0;
+	padding: 12px;
+	color: #999;
+	font-size: 13px;
+}
+
+@media (max-width: 767px) {
+	.fcp-ig--cols-6 .fcp-ig__item,
+	.fcp-ig--cols-4 .fcp-ig__item {
+		width: 33.333%;
+	}
+}

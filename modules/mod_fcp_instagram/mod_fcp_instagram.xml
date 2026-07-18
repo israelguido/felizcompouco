@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>mod_fcp_instagram</name>
+	<author>Feliz com Pouco</author>
+	<version>1.0.0</version>
+	<description>Grade de fotos do Instagram (@felizcompouco) sem a API antiga (descontinuada).</description>
+	<files>
+		<filename module="mod_fcp_instagram">mod_fcp_instagram.php</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>assets</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="username" type="text" default="felizcompouco" label="Usuário Instagram" />
+				<field name="auto_latest" type="radio" default="1" label="Buscar posts mais recentes"
+					description="Atualiza a grade com os posts mais novos do perfil (cache ~6h). Se falhar, usa os shortcodes manuais."
+					layout="joomla.form.field.radio.switcher">
+					<option value="0">Não</option>
+					<option value="1">Sim</option>
+				</field>
+				<field name="shortcodes" type="textarea" rows="4" filter="raw"
+					label="Shortcodes (fallback)"
+					description="Usados só se a busca automática falhar. Um por linha ou URL completa do post."
+					default="Da5tLVwOPcr&#10;Da0-bA6mDOS&#10;DaoGD2rN5Yf&#10;DajV9JMOgtK&#10;DagoYhmGEve&#10;DadNRBVulDE" />
+				<field name="count" type="number" default="6" label="Quantidade de fotos" min="1" max="24" />
+				<field name="columns" type="list" default="3" label="Colunas (sidebar)">
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="6">6</option>
+				</field>
+				<field name="image_size" type="list" default="m" label="Tamanho da imagem">
+					<option value="t">Thumb</option>
+					<option value="m">Médio</option>
+					<option value="l">Grande</option>
+				</field>
+				<field name="show_follow" type="radio" default="1" label="Mostrar link Seguir" layout="joomla.form.field.radio.switcher">
+					<option value="0">Não</option>
+					<option value="1">Sim</option>
+				</field>
+				<field name="follow_text" type="text" default="Siga no Instagram" label="Texto do link" />
+				<field name="layout" type="modulelayout" label="Layout" class="form-select" />
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="moduleclass_sfx" type="text" label="Sufixo de classe" />
+				<field name="cache" type="list" default="1" label="Cache">
+					<option value="1">Sim</option>
+					<option value="0">Não</option>
+				</field>
+				<field name="cache_time" type="number" default="900" label="Tempo de cache (s)" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

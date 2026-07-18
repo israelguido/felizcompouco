@@ -1,0 +1,489 @@
+/*******************************************
+***          YT Framework: less          ***
+*******************************************/
+
+// --* Menu Style Templates  *----------------------
+// -----------------------------------------------
+/*   1.LTR Language Menu Style
+ *      1.Moo menu & Css Menu
+ *      2.Mega Menu
+ *      3.Responsive Menu
+ *      
+ *   2.RTL Language Menu Style
+ *      1.Moo menu & Css Menu
+ *      2.Mega Menu
+ *      3.Responsive Menu
+ *   
+ */
+// 1. LTR Menu Style
+// --------------------------------------------------
+.menu.mega-content {
+	//display: block !important;
+}
+   
+// 1.1 Moo menu 
+// -------------------------
+ 
+ // Fancy Menu
+.fancy {
+	background: @background1;
+	position: absolute !important;
+	padding: 0;
+	margin: 0;
+	border: none;
+}
+
+#moonavigator { 
+	margin: 0 ;
+	padding: 0;
+	list-style: none;
+	z-index: 87;
+	list-style: none;
+	display: inline-block;
+    li.level1 {
+		position: relative;
+		padding: 0;
+		list-style: none;
+		display: block;
+		.float-left();
+		.margin-right(1px);
+		.text-left();
+		> .item-link  {
+			margin: 0 ;
+			color: #222;
+			font-size:14px;
+			display: block; 
+			cursor: pointer;
+			text-transform: uppercase;
+			padding: 14px 20px;
+			font-family: @headingsFontFamily;
+			font-weight: bold;
+		}
+		// Child Menu Item
+		.fa-angle-down{
+		   font-size:14px;
+		   margin:0 5px;
+		   display: none;
+		}
+		.menu {
+			font-family: @headingsFontFamily;
+		}
+		//add icon images	   
+		
+		// Add description and show icons
+		.showdesc{
+			.menu-title{
+				line-height: 100%;
+				padding-bottom: 3px;
+				margin-top: -1px;
+				display: block;
+			}
+			.menu-desc{
+				display: block;
+				font-size: 11px;
+				color: #ccc;
+				line-height: 100%;
+			}
+		}
+		//Hover and Active (:hover of cssmenu, .hover of moomenu)
+		&.active ,&:hover{
+			background: @background1;
+			> a, 
+			> .level1 {
+				color: #fff;
+			}
+		}
+    }
+	&.fancyMenu {
+		li.level1 {
+			&:hover{
+				background: none;
+				> a, 
+				> .level1 {
+					color: #fff;
+				}
+			}
+			&.active {
+				background: @background1;
+				> a, 
+				> .level1 {
+					color: #fff;
+				}
+			}
+		}
+	}
+	ul {
+		.box-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+	}
+    
+    // Show All Submenu
+    ul.subnavi  {
+		border-top: 2px solid @background1;
+		left: 0;
+		position: absolute;
+		padding: 0;
+		list-style: none;
+		width: 240px;
+		//background: darken(@background1, 10%);
+		background: #fff;
+		ul {
+			box-shadow: 2px 3px 5px 0 rgba(0, 0, 0, 0.3);
+			.rtl {
+				box-shadow: -2px 3px 5px 0 rgba(0, 0, 0, 0.3);
+			}
+		}
+		li {
+			position: relative;
+			border-bottom: 1px solid @borderColor;
+			&:first-child {
+				//border-top: none;
+			}
+			.item-link {
+				display: block;
+				color: #222;
+				font-size: 14px;
+				cursor: pointer;
+				text-transform: capitalize;
+				line-height: 50px;
+				.transition(all 0.5s ease-in-out);
+				position: relative;
+				padding: 0 20px;
+			}
+			.fa-angle-right{
+				position: absolute;
+				right: 20px;
+				z-index: 1;
+				line-height: 50px;
+				.transition(all 0.5s ease-in-out);
+			}
+			// Add description and show icons
+			.showdesc{
+				span.menu-title{
+					padding-bottom: 5px;
+				}
+			}
+			
+			// Hover and Active menu
+			&:hover,&.active{
+				>.item-link{
+					transition: padding 0.2s ease-in;
+					color: @linkColor;
+					
+				}
+			}
+			.fancy + .hover{
+				background: transparent;
+			}
+			&.last >.item-link{
+				border: none;
+			}
+		}
+    }
+}
+// 1.2. Mega Menu
+// ----------------------------------
+#meganavigator{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	z-index: 87;
+    > li{ 
+		&:extend(#moonavigator li.level1 all);
+	}
+	&.fancyMenu {
+		li.level1 {
+			&:hover{
+				background: none;
+				> a, 
+				> .level1 {
+					color: #fff;
+				}
+			}
+			&.active {
+				background: @background1;
+				> a, 
+				> .level1 {
+					color: #fff;
+				}
+			}
+		}
+	}
+	
+    .mega-content{
+		position: absolute;
+		z-index: 10;
+		background: #fff;
+		display:none;
+		.box-shadow(0 3px 5px rgba(0, 0, 0, 0.35));
+		border-top: 2px solid @background1;
+	    //Mega Child
+	    &.megachild {
+			
+		}
+	    
+	    //Mega Colums
+	    .mega-col {
+			.float-left();
+			border-left: 1px solid @borderColor;
+			&:frist {
+				border-left: none;
+			}
+			&.one{
+				width: 220px;
+			}
+
+			//Mega Group
+			.mega-group  {
+				display: block;
+				div.mega-group-title{
+					.item-link{
+						padding: 10px 20px;
+						display: block;
+						text-transform: uppercase;
+						&.hidden-title {
+							display: none;
+						}
+					}
+					.showdesc {
+						.menu-title{
+							padding: 0 0 5px;
+						}
+					}
+					.fa-angle-right{
+						display: none;
+					}
+				}
+			}
+			.mega-module{
+				padding: 20px 30px;
+				.mega-module-title{
+					padding: 20px 15px 5px;
+					h3{
+						padding: 0 0 10px;
+						border-bottom: 1px solid #fff;
+						color: #fff;
+						display: inline-block;
+					}
+				}
+				.mega-module-content{
+
+				}
+			}
+			.item .moduleItemImage img, .item .moduleItemImage a img {
+				.transition(none 0s ease 0s) ;
+			}
+	    }
+	    ul.subnavi, 
+		.menu {
+			list-style: none;
+			padding: 0;
+			li{
+				&:extend(#moonavigator ul.subnavi li all);
+			}
+	    }
+    }
+ }
+
+// 1.3 Responsive Menu
+// ----------------------------------
+
+ul.resmenu{
+	margin: 0 ;
+	.padding-left(10px);
+	background-color: #333;
+	
+    li {
+		a{
+			font-weight: bold;
+			border-bottom: 1px solid #444; 
+			color: #999;
+			border: none;
+			padding: 5px 8px;
+			&:focus,&:hover, {
+				color: @white;
+				background: @background1;
+			}
+			&.active{
+				background: none;
+				color: @linkColor;
+			}
+		}
+    }
+    //Menu level2
+    ul.nav{ 
+		padding: 0 10px;
+		a{
+			font-weight: normal;
+		}
+    }
+    
+}
+.btn-hamburger{
+	padding: 15px 20px;
+	font-size: 15px;
+}
+.slideout-menu {
+	position: fixed;
+	.left(0);
+	top: 0;
+	bottom: 0;
+	z-index: 1;
+	width: 256px;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	display: none;
+}
+.slideout-panel { 
+	position:relative;background: #fff; 
+}
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+	overflow: hidden;
+}
+.slideout-open .slideout-menu {
+	display: block;
+}
+.menu {
+	&.menu-horizontal {
+		li {
+			display: inline-block;
+			position: relative;
+			line-height: 30px;
+			&:before {
+				background: #808080 none repeat scroll 0 0;
+				bottom: 0;
+				content: "";
+				height: 12px;
+				margin-bottom: auto;
+				margin-top: auto;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 1px;
+				z-index: 99;
+			}
+			&:last-child {
+				&:before {
+					display: none;
+				}
+			}
+			.rtl &{
+				&:last-child {
+					&:before {
+						display: block;
+					}
+				}
+				&:first-child {
+					&:before {
+						display: none;
+					}
+				}
+			}
+			a {
+				padding: 0 15px;
+			}
+		}
+	}
+	&.menu-vertical {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		li {
+			line-height: 39px;
+			border-bottom: 1px solid @borderColor;
+		}
+	}
+}
+// 2. RTL Menu Style
+// --------------------------------------------------
+
+.rtl {
+	// Moo Menu & Css Menu
+     // ----------------------------------
+    #moonavigator{
+        li.level1{
+			border-right: none;
+			&.hover ul.level2{
+				left: auto;
+				right: 0;
+			}
+        }
+        ul {
+			left: auto;
+			right: -999em;
+		}
+        ul.subnavi  {
+            li {
+				.item-link{
+					padding-left: 0;
+				}
+                // Add description and show icons
+                &:hover ul.level3,
+                li.level3:hover ul.level4,
+                li.level4:hover ul.level5{
+					left: auto;
+					right: 100%;
+				}
+                 // Hover and Active menu
+               &.hover,&.active{
+					>.item-link{
+                        transition: padding 0.2s ease-in;
+					}
+					.fa-angle-double-right{
+                        transition: left 0.2s ease-in;
+					}
+				}
+				.fa-angle-right {
+					left: 20px;
+					right: auto;
+					transform: rotate(180deg);
+				}
+            } 
+        }
+     } 
+    //Mega Menu
+    // ----------------------------------
+    #meganavigator{
+        li.level1{
+            
+			.mega-content{ 
+			//Mega colums
+			.mega-col .mega-group{
+				
+			}
+			.mega-col {
+				border-left: none;
+				border-right: 1px solid @borderColor;
+				float: right;}
+				ul.subnavi li{
+					.fa-angle-right{
+						left: 20px;
+						right: auto;
+						.rotate(180deg);
+					}
+					 &:hover,&.active{
+						>.item-link{
+						   
+							transition: padding 0.2s ease-in;
+						}
+						.fa-angle-right{
+							transition: left 0.2s ease-in;
+						}
+					 }
+				}
+				.item .moduleItemImage img, .item .moduleItemImage a img{
+					.transition(none 0s ease 0s) ;
+				}
+			}
+            
+        }
+    }
+}
+@media (max-width: 991px) {
+	#yt_menu {
+		background: @background1;
+	}
+}
+

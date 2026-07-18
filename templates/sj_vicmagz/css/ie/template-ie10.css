@@ -1,0 +1,6 @@
+/*******************************************
+***          YT Framework: less          ***
+*******************************************/
+.rtl .module.breadcrum-style-me .modcontent .breadcrumb li.here:before {
+  -ms-transform: rotate(180deg);
+}

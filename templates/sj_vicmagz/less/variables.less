@@ -1,0 +1,57 @@
+/*******************************************
+***          YT Framework: less          ***
+*******************************************/
+
+// Colour library for LESS
+// --------------------------------------------------
+// Grays
+// -------------------------
+
+.radius(@border: 50%) {
+	-webkit-border-radius: @border;
+	-moz-border-radius: @border;
+	border-radius: @border;
+}
+
+.text-link{
+	color: @linkColor;
+}
+.btn-color {
+	background: @background1;
+	color: #fff;
+	.border-radius(0);
+	padding: 0 20px;
+	line-height: 30px;
+	font-weight: bold;
+	&:hover {
+		background: lighten(@background1, 10%);
+	}
+}
+.btn-border {
+	border: 2px solid #002222;
+	display: inline-block;
+	padding: 0 30px;
+	color: #002222;
+	.border-radius(0);
+	text-transform: uppercase;
+	line-height: 46px;
+	font-weight: bold;
+	&:hover {
+		border-color: @linkColor;
+		color: @linkColor;
+	}
+}
+.boderCenter(@bottom,@top){
+	position: relative;
+	&:before {
+		bottom: @bottom;
+		content: "";
+		left: 0;
+		margin: 0 auto;
+		position: absolute;
+		right: 0;
+		top: @top;
+		width: 1px;
+		background: @borderColor;
+	}
+}

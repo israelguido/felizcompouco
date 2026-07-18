@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+	<name>System - J3 Legacy Aliases</name>
+	<author>Local</author>
+	<creationDate>2026-07-18</creationDate>
+	<copyright>GPL</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<version>1.0.0</version>
+	<description>Provides Joomla 3 class aliases (JFactory, JHtml, JURI, ...) for legacy templates such as SJ VicMagz / YT Framework on Joomla 6.</description>
+	<files>
+		<filename plugin="j3legacy">j3legacy.php</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic"/>
+		</fields>
+	</config>
+</extension>

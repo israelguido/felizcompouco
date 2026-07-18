@@ -1,0 +1,376 @@
+/*******************************************
+***          YT Framework: less          ***
+*******************************************/
+/*   1.System Tool
+ *   2.Grid Systemp And Page Structure
+ *   3.Joomla Base & Component Joomla
+ *   4.Custom Module
+ *   5.RTL Menu
+ */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/*******************************************
+***       Style color  Cream Gold        ***
+*******************************************/
+.media-left,
+.media-right,
+.media-body {
+  display: table-cell;
+  vertical-align: top;
+}
+.media,
+.media-body {
+  overflow: visible;
+}
+.rtl {
+  /*GENERIC BASE JOOMLA*/
+  /*GENERIC ARTICLE STYLES*/
+}
+.rtl .lib-article-aside-rtl dd {
+  border-right: none;
+  border-left: 1px solid #bbb;
+}
+.rtl .lib-article-aside-rtl dd:last-child {
+  border: none;
+}
+.rtl #yt_tool_bottom .module .btn-special {
+  padding: 0 5px;
+}
+.rtl #logo #top3 {
+  text-align: left;
+}
+.rtl .module.me-login .yt-loginform {
+  text-align: left;
+}
+.rtl #myLogin .modal-content {
+  text-align: right;
+}
+.rtl #yt_breadcrumb #breadcrumb .breadcrumb > li + li:after {
+  float: left;
+  transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  position: relative;
+  top: 2px;
+}
+.rtl [class^="icon-"],
+.rtl [class*=" icon-"] {
+  margin: 0 0 0 5px;
+}
+.rtl .icon-caret-right:before {
+  content: "\f0d9";
+}
+.rtl .form-horizontal .control-label {
+  text-align: right;
+}
+.rtl #system-message .error > ul {
+  margin-right: 0;
+  background-position: 99% center;
+}
+.rtl .blog .items-leading .item,
+.rtl .blog .items-row .item {
+  border: none;
+}
+.rtl .blog .items-leading .item .article-text .item-headinfo dl.article-info,
+.rtl .blog .items-row .item .article-text .item-headinfo dl.article-info {
+  white-space: nowrap;
+}
+.rtl .blog .items-leading .item .article-text .hits,
+.rtl .blog .items-row .item .article-text .hits {
+  background-position: right center;
+  padding-left: 0px;
+  padding-right: 27px;
+}
+.rtl .blog .items-leading .item .article-text .article-aside .article-info,
+.rtl .blog .items-row .item .article-text .article-aside .article-info {
+  white-space: nowrap;
+}
+.rtl .blog .items-leading .item .article-text .article-aside .article-info .create,
+.rtl .blog .items-row .item .article-text .article-aside .article-info .create {
+  padding-left: 0px;
+  padding-right: 0;
+  background-position: right center;
+  margin-right: 0px;
+  margin-left: 10px;
+}
+.rtl .blog .items-leading .item .article-text .article-aside .article-info .createdby,
+.rtl .blog .items-row .item .article-text .article-aside .article-info .createdby {
+  padding-left: 0px;
+  padding-right: 0;
+  background-position: right center;
+  margin-right: 0px;
+  margin-left: 10px;
+}
+.rtl .blog .items-leading .item .article-text .article-aside .article-info .hits,
+.rtl .blog .items-row .item .article-text .article-aside .article-info .hits {
+  padding-left: 0px;
+  padding-right: 0;
+  background-position: right center;
+}
+.rtl .blog .items-leading .item .article-text .item-tags .tags a,
+.rtl .blog .items-row .item .article-text .item-tags .tags a {
+  float: right;
+  margin: 0 0px 1px 1px;
+}
+.rtl .blog.tag-category ul.blank.items-row .item {
+  padding-right: 0;
+  margin-bottom: 20px;
+}
+.rtl .blog.tag-category ul.blank.items-row .item .item-image {
+  margin: 0 0 20px;
+}
+.rtl .blog-featured .items-leading .item,
+.rtl .blog-featured .items-row .item {
+  border: none;
+}
+.rtl .blog-featured .items-leading .item .article-text .item-headinfo dl.article-info,
+.rtl .blog-featured .items-row .item .article-text .item-headinfo dl.article-info {
+  white-space: nowrap;
+}
+.rtl .blog-featured .items-leading .item .article-text .hits,
+.rtl .blog-featured .items-row .item .article-text .hits {
+  background-position: right center;
+  padding-left: 0px;
+  padding-right: 27px;
+}
+.rtl .blog-featured .items-leading .item .article-text .article-aside .article-info,
+.rtl .blog-featured .items-row .item .article-text .article-aside .article-info {
+  white-space: nowrap;
+}
+.rtl .blog-featured .items-leading .item .article-text .article-aside .article-info .create,
+.rtl .blog-featured .items-row .item .article-text .article-aside .article-info .create {
+  padding-left: 0px;
+  padding-right: 0;
+  background-position: right center;
+  margin-right: 0px;
+  margin-left: 10px;
+}
+.rtl .blog-featured .items-leading .item .article-text .article-aside .article-info .createdby,
+.rtl .blog-featured .items-row .item .article-text .article-aside .article-info .createdby {
+  padding-left: 0px;
+  padding-right: 0;
+  background-position: right center;
+  margin-right: 0px;
+  margin-left: 10px;
+}
+.rtl .blog-featured .items-leading .item .article-text .article-aside .article-info .hits,
+.rtl .blog-featured .items-row .item .article-text .article-aside .article-info .hits {
+  padding-left: 0px;
+  padding-right: 0;
+  background-position: right center;
+}
+.rtl .blog-featured .items-leading .item .article-text .item-tags .tags a,
+.rtl .blog-featured .items-row .item .article-text .item-tags .tags a {
+  float: right;
+  margin: 0 0px 1px 1px;
+}
+.rtl .blog-featured .items-leading .item .item-image .feature-info,
+.rtl .blog-featured .items-row .item .item-image .feature-info {
+  text-align: right;
+}
+.rtl .blog-featured .items-leading .item .item-image .feature-info .create,
+.rtl .blog-featured .items-row .item .item-image .feature-info .create {
+  margin-right: 0px;
+  margin-left: 20px;
+  padding-left: 0px;
+  padding-right: 23px;
+  background-position: right center;
+}
+.rtl .blog-featured .items-leading .item .item-image .feature-info .createdby,
+.rtl .blog-featured .items-row .item .item-image .feature-info .createdby {
+  margin: 0px;
+  padding-left: 0px;
+  padding-right: 25px;
+  background-position: right center;
+}
+.rtl .blog-featured .items-leading .item .article-text a.more,
+.rtl .blog-featured .items-row .item .article-text a.more {
+  float: right;
+  padding: 10px 0px 10px 20px;
+}
+.rtl .blog-featured .items-leading .item .article-text a.more:after,
+.rtl .blog-featured .items-row .item .article-text a.more:after {
+  left: auto;
+  right: 0px;
+}
+.rtl .blog-featured .items-leading .item .article-text .hits,
+.rtl .blog-featured .items-row .item .article-text .hits {
+  float: none;
+}
+.rtl .blog-featured .items-leading .item:hover .article-text a.more,
+.rtl .blog-featured .items-row .item:hover .article-text a.more {
+  padding: 10px 20px;
+}
+.rtl .item-page .article-aside {
+  overflow: hidden;
+}
+.rtl .item-page .article-aside ul.actions {
+  float: left;
+}
+.rtl .item-page .article-aside dl.article-info {
+  float: right;
+}
+.rtl .item-page .article-aside dl.article-info dd {
+  margin-right: 0px;
+  margin-left: 20px;
+  font-size: 100%;
+  white-space: nowrap;
+}
+.rtl .item-page .article-aside dl.article-info dd .create {
+  padding-left: 0px;
+  padding-right: 23px;
+  background-position: right center;
+}
+.rtl .item-page .article-aside dl.article-info dd .hits {
+  padding-left: 0px;
+  padding-right: 27px;
+  background-position: right center;
+}
+.rtl .item-page .tags a {
+  float: right;
+  margin: 0px 0px 1px 1px;
+}
+.rtl .item-page .img-fulltext.pull-left {
+  margin: 0 0 1em 1em;
+}
+.rtl .item-page .img-fulltext.pull-right {
+  margin: 0 1em 1em 0;
+}
+.rtl .item-page .image {
+  float: right;
+  margin: 5px 0px 20px 30px;
+}
+.rtl .item-page .dt-list {
+  float: right;
+}
+.rtl .item-page .dt-list ul li {
+  padding: 10px 50px 10px 10px;
+}
+.rtl .item-page .dt-list ul li strong {
+  left: auto;
+  right: 10px;
+}
+.rtl .item-page .notice {
+  background-position: 98% center;
+  padding: 30px 60px 30px 30px;
+}
+.rtl .item-page .article-index {
+  margin: 0px 20px 0px 0px;
+}
+.rtl .item-page ul.related-items li .img-fulltext {
+  float: right;
+  margin: 0 0 0 20px;
+}
+.rtl .item-page ul.related-items li .related-item-date {
+  float: right;
+  margin-right: 0px;
+  margin-left: 20px;
+}
+.rtl .item-page ul.related-items li .related-item-hits {
+  float: right;
+}
+.rtl table.category thead tr th {
+  text-align: right;
+}
+.rtl div.categories-list ul {
+  padding: 0 15px 0 0;
+}
+.rtl div.categories-list ul ul > li:after,
+.rtl div.categories-list ul ul > li:before {
+  left: auto;
+  right: -1px;
+}
+.rtl dl.tabs dt {
+  float: right;
+}
+.rtl .search #searchForm .phrases-box input {
+  float: right;
+  margin: 4px -20px 0 5px;
+}
+.rtl #advanced-search {
+  text-align: right;
+}
+.rtl.contentpane #mailto-window .mailto-close {
+  left: 40px;
+  right: auto;
+}
+.rtl.contentpane .row-fluid [class*="span"]:first-child {
+  margin-right: 0;
+}
+.rtl.contentpane .row-fluid [class*="span"] {
+  margin: 0;
+  margin-right: 2.12766%;
+  float: right;
+}
+.rtl .pager li > a,
+.rtl .pager li > span {
+  white-space: nowrap;
+}
+.rtl.view-login .wrap-login .form-horizontal .control-group {
+  float: right;
+}
+.rtl.view-login .wrap-login .other-link ul.yt-list li {
+  float: right;
+  margin: 0 0 0 25px;
+}
+.rtl .registration .form-horizontal .control-label {
+  text-align: right;
+  float: right;
+}
+.rtl div.archive .filter-search #limit {
+  margin-right: 0px;
+  margin-left: 10px;
+}
+.rtl .tag-category ul.items-row .item .item-image {
+  margin: 0px 0px 0px 20px;
+}
+.rtl .tag-category ul.items-row .item a.readmore {
+  float: right;
+}
+.rtl .tag-category ul.items-row .item a.readmore:after {
+  left: auto;
+  right: 0px;
+}
+.rtl .tag-category ul.items-row .item .article-text .item-headinfo .article-info dd .create {
+  background-position: right center;
+  padding-left: 0px;
+  padding-right: 25px;
+}
+.rtl .pagination li {
+  float: right;
+}
+.rtl .pagination li .fa-long-arrow-right:before {
+  content: "\f177";
+}
+.rtl .pagination li .fa-long-arrow-left:before {
+  content: "\f178";
+}
+.rtl .yt-slider-carousel .carousel-indicators {
+  left: 0;
+  right: auto;
+}

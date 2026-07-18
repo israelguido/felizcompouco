@@ -1,0 +1,67 @@
+/*******************************************
+***          YT Framework: less          ***
+*******************************************/
+
+/***
+**	1.Template variables
+**	2.System tool
+**	3.Grid system andpage structure
+**  4. library;
+**	5.Joomla Styles
+**	6.component Joomla
+**	7.Modules
+**	8. Main menu
+**	9. Bonus Page
+**	10. k2 component
+*******************************************/
+
+@import "../asset/bootstrap/less/mixins.less";
+
+@import "animation.less"; 
+
+// TEMPLATE STYLE
+#cpanel_wrapper{
+      #cpanel_btn.isDown{background: @background1;}
+    #ytcpanel_accordion .cpanel-head .cpanel-reset{
+  
+        .btn{background: @background1;}
+        &:before{content: "";position: absolute;border-width: 8px 8px 8px 0px ;left: -7px;top: 9px; border-style: solid;border-color: transparent @background1 transparent transparent;}
+    }
+}
+// --------------------------------------------------
+
+// 1.Template variables
+@import "system/variables.less";
+@import "color/variables_color.less";
+@import "variables.less";
+@import "template_mixins.less";
+
+// 2.System tool
+@import "system/tool.less";
+@import "system/utilities.less";
+@import "system/typography.less";
+
+ 
+// 3.Grid system andpage structure
+@import "layout.less";
+
+// 4. library
+@import "library.less";
+
+// 5.Joomla Styles
+@import "joomla.less";
+
+// 6.component Joomla
+@import "component.less";
+
+// 7.Modules
+@import "modules.less";
+
+// 8. Main menu
+@import "menus.less";
+
+// 9. Bonus Page
+@import "bonus-page.less";
+
+// 9. k2 component Remove if you don't use K2 component
+@import "k2.less";

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>Sj Newsletter Popup</name>
+	<author>YouTech Company</author>
+	<creationDate>January 2016</creationDate>
+	<copyright>Copyright (c) 2009-2012 YouTech Company</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>contact@ytcvn.com</authorEmail>
+	<authorUrl>http://www.smartaddons.com</authorUrl>
+	<version>1.0.0</version>
+	<description>TPL_YTFRAMEWORK_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_sj_newsletter_popup">mod_sj_newsletter_popup.php</filename>
+		<filename>index.html</filename>
+		<folder>core</folder>
+		<folder>language</folder>
+		<folder>assets</folder>
+		<folder>tmpl</folder>
+	</files>
+	<languages />
+	<config>
+		<fields name="params" addfieldpath="">
+			<fieldset name="basic">
+				<field name="expired" type="text" size="50" default="1" required="true" label="Time Expired cookie(day)" description="Time Expired cookie(day)" />
+				<field name="width" type="text" size="50" default="40%" required="true" label="Popup Width" description="Popup Width Ex: 40% or 450px" />
+				<field name="image_bg_display" label="Show Image Background" class="btn-group" description="Show Image Background" type="radio" default="0">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="imageurl" type="media" directory="folio"  hide_none="1" label="Image Background"  size="40"  description="Background Image" />
+				<field name="color_bg" type="color" size="50" default="#fff" label="Color Background" description="Background Color" />
+			</fieldset>
+			<fieldset name="popup_settings" label="Popup Settings">
+				<field name="title_display" label="Show Title" class="btn-group" description="Show Title" type="radio" default="0">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="title" type="text" size="50" default="" required="true" label="Popup Heading Title" description="Popup Heading Title" />
+				<field name="newsletter_promo" type="textarea" class="inputbox" required="true"  rows="3" cols="30" label="Promo text for Newsletter"  description="Promo text for Newsletter" />
+			</fieldset>
+			<fieldset name="html_mail_template" label="HTML Email Template">
+				<field name="email_template_subject" type="text" size="50" default="" required="true" label="Subject Name" description="Subject Name" />
+				<field name="content_email" type="editor" buttons="true" hide="pagebreak,readmore" required="true"  class="inputbox"  filter="JComponentHelper::filterText"  label="Content Email"    description="Content Email" />
+			</fieldset>
+
+			<fieldset name="advanced">
+			    <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="fieldMODULECLASSSUFFIX" />
+                <field name="layout" type="modulelayout" default="basic" class="btn-group" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+			</fieldset>
+			
+		</fields>
+	</config>
+</extension>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>mod_fcp_articles</name>
+	<author>Feliz com Pouco</author>
+	<version>1.0.0</version>
+	<description>Magazine layouts for VicMagz (slideshow, popular, latest-news, recent, mostviewed, trending)</description>
+	<files>
+		<filename module="mod_fcp_articles">mod_fcp_articles.php</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>assets</folder>
+		<folder>language</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="layout" type="list" default="popular" label="Layout">
+					<option value="slideshow">Slideshow</option>
+					<option value="popular">Popular</option>
+					<option value="latest">Latest / Para Você</option>
+					<option value="recent">Recent</option>
+					<option value="mostviewed">Most Viewed</option>
+					<option value="trending">Trending / Guia</option>
+				</field>
+				<field name="count" type="number" default="5" label="Count" />
+				<field name="ordering" type="list" default="latest" label="Ordering">
+					<option value="latest">Latest</option>
+					<option value="hits">Hits</option>
+					<option value="featured">Featured first</option>
+					<option value="random">Random</option>
+				</field>
+				<field name="catid" type="category" extension="com_content" multiple="true" layout="joomla.form.field.list-fancy-select" label="Categories" />
+				<field name="show_child" type="radio" default="1" label="Include child categories" layout="joomla.form.field.radio.switcher">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="featured" type="list" default="0" label="Featured">
+					<option value="0">All</option>
+					<option value="1">Only featured</option>
+					<option value="2">Hide featured</option>
+				</field>
+				<field name="show_title" type="radio" default="1" label="Show title" layout="joomla.form.field.radio.switcher">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="show_category" type="radio" default="1" label="Show category" layout="joomla.form.field.radio.switcher">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="show_date" type="radio" default="0" label="Show date" layout="joomla.form.field.radio.switcher">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="show_intro" type="radio" default="1" label="Show intro" layout="joomla.form.field.radio.switcher">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="intro_limit" type="number" default="100" label="Intro chars" />
+				<field name="title_limit" type="number" default="60" label="Title chars" />
+				<field name="pretext" type="textarea" rows="2" label="Pre text" />
+				<field name="custom_link" type="radio" default="0" label="Custom link" layout="joomla.form.field.radio.switcher">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="custom_link_title" type="text" default="Veja mais" label="Custom link title" />
+				<field name="custom_link_url" type="text" default="/" label="Custom link URL" />
+				<field name="theme" type="text" default="style1" label="Theme style class" />
+				<field name="nb_column0" type="number" default="1" label="Columns desktop" />
+				<field name="nb_column1" type="number" default="1" label="Columns laptop" />
+				<field name="nb_column2" type="number" default="1" label="Columns tablet" />
+				<field name="moduleclass_sfx" type="text" label="Module Class Suffix" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

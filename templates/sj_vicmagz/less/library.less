@@ -1,0 +1,162 @@
+
+//***************
+.lib-catItemRatingBlock{
+	padding: 2px 0 0;
+	margin-right: 8px;
+	display: block;
+    .itemRatingForm{
+		line-height: 20px;
+		padding-right: 8px;
+		.itemRatingList, .itemRatingList a:hover{
+			background: url(../images/icon/transparent_star.gif) repeat-x scroll ;
+		}
+		ul.itemRatingList{
+			height: 20px;
+			width: 75px;
+			z-index: 1;
+			li.itemCurrentRating{
+				height: 18px;
+				background: url(../images/icon/transparent_star.gif) repeat-x scroll 0 -18px;
+			}
+			a:hover{ background-position: left -18px;}
+		}
+		.catItemRatingLog{
+			color: #999;
+		}
+    }
+}
+//****************
+.lib-article-aside {
+    margin: 0;
+    overflow: hidden;
+    .article-info{
+		margin-bottom: 10px;
+	}
+    .catItemCommentsLink{
+		border: none;
+	}
+    dd{
+		display: inline-block;
+		color: #777;
+		font-size: 11px;
+		border-right: 1px solid #bbb;
+		padding: 0 15px;line-height: 8px ;
+      
+		&:last-child{
+			border: none;
+		}
+		i{
+			line-height: 8px;
+			font-size: 13px;
+			color: #909090;
+		}
+		&.catItemCategory a, 
+		.catItemCommentsLink a{
+			color: #909090;
+			&:hover{
+				color: @linkColor;
+			}
+		}
+    }
+    .catItemAuthor{
+		a{
+			color: #909090;
+			&:hover{
+				color: @linkColor;
+			}
+		}
+    }
+}
+//****************
+.lib-catItemCategory{
+   display: inline-block;
+   background: @background1;
+   position: absolute;
+   left: 0;
+   top: 10px;
+   padding: 0 10px;
+   line-height: 20px;
+   border: none;
+   box-shadow: 0 3px 5px 0 #444;
+   a{
+		color: #fff;
+		font-size: 12px;
+		display: block;
+		overflow: hidden;
+   }
+   .arow-after{
+		content: "";
+		width: 0px;
+		height: 0px;
+		position: absolute;
+		border-style: solid;
+		border-color: transparent transparent transparent @background1;
+		border-width: 10px 0px 10px 7px;
+		bottom: 0;
+		right: -7px;
+	}
+   .arow-before{
+		content: "";
+		width: 0px;
+		height: 0px;
+		position: absolute;
+		border-style: solid;
+		border-color: transparent transparent transparent @background1;
+		border-width: 0 0px 7px 12px;
+		bottom: -6px;
+		left: 0;
+	}
+}
+
+.lib-img-overlay {
+	overflow: hidden;
+	position: relative;
+	.overlay {
+		bottom: 0;
+		left: 0;
+		right: 0;
+		top: 0;
+		background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
+		display: block;
+		overflow: hidden;
+		position: absolute;
+		.transition(all 0.5s ease 0s);
+		z-index: 20;
+		width: 0;
+		a {
+			border-radius: 0;
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			right: 0;
+			top: 0;
+			.transition(all 0.5s ease 0s);
+			border: 1px solid #fff;
+			color: #fff;
+			display: block;
+			font-size: 20px;
+			font-weight: none;
+			line-height: 40px;
+			position: absolute;
+			text-align: 
+			center;
+			z-index: 100;
+			height: 40px;
+			width: 40px;
+			.radius(20px);
+			&:hover {
+				color: @linkColor;
+				border-color: @linkColor;
+			}
+		}
+		i {
+			margin: 0;
+			line-height: 38px;
+		}
+	}
+	&:hover {
+		.overlay {
+			width: 100%;
+		}	
+	}
+}

@@ -1,0 +1,86 @@
+// Extra small devices Phones
+// --------------------------------------------------
+/* ------------------------------------*/
+/* 	1. Layout Templates ---------------*/
+/* 	2. Joomla Core      ---------------*/
+/* 	3. Home Page        ---------------*/
+/* 	4. Bonus Page       ---------------*/
+/* 	5. Module           ---------------*/
+/* 	6. k2 Content       ---------------*/
+/*	-----------------------------------*/
+@media (max-width: 480px) {
+	/* 	1. Layout Templates ---------------*/
+	/* 	2. Joomla Core      ---------------*/
+	/* 	3. Home Page        ---------------*/
+	/* 	4. Bonus Page       ---------------*/
+	/* 	5. Module           ---------------*/
+	/* 	6. k2 Content       ---------------*/
+	.home-default, .home-variations {
+		#top1 {
+			width: auto;
+		}
+	}
+	.module {
+		&.search-top {
+			.k2SearchBlockForm {
+				max-width: 200px;
+			}
+			.inputbox {
+				max-width: 100%;
+			}
+		}
+		&.language-switcher{
+			border: none;
+			width: auto;
+			.dropdown-menu {
+				min-width: 0;
+			}
+		}
+	}
+	div.k2SearchBlock div.k2LiveSearchResults {
+		min-width: 225px;
+		right: 0;
+		top: 40px;
+	}
+	.module .sj-gridslider .gridslider-inner .item-wrap {
+		margin-bottom: 0;
+	}
+	.module .sj-gridslider .gridslider-inner .owl-item .item-wrap-inner {
+		margin: 0;
+	}
+	.module.newsletters {
+		.acymailing_form {
+			.inputbox {
+				max-width: 190px;
+			}
+		}
+		.acymailing_modulenewsletters {
+			.button {
+				padding: 10px;
+			}
+		}
+		
+	}
+	.g-pageAbout .growth div.yt-tabs.underline ul.nav-tabs li {
+		border-bottom: medium none;
+		display: block;
+		overflow: hidden;
+		width: 100%;
+	}
+	.module .login-form-wrapper .modal-header .title::after {
+		display: none;
+	}
+	.rtl {
+		.module.search-top {
+			position: initial;
+		}
+		.module.search-top .k2SearchBlock .k2SearchBlockForm {
+			left: 0;
+			right: auto;
+		}
+		div.k2SearchBlock div.k2LiveSearchResults {
+			left: 0;
+			right: auto;
+		}
+	}
+}

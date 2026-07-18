@@ -1,0 +1,45 @@
+# Ambiente local (Warden / secrets)
+.env
+.env.*
+!.env.sample
+.warden/
+
+# Migração / dumps (SQL, logs, zips)
+migration/
+migrations/
+*.sql
+*.sql.gz
+
+# Configuração do site (credenciais do banco)
+/configuration.php
+
+# Cache e temporários do Joomla
+/cache/
+/tmp/
+/administrator/cache/
+/administrator/logs/
+/logs/
+
+# Uploads e mídia gerada
+/images/
+/media/
+/files/
+/yt-assets/
+
+# Instalação (não deve existir em produção)
+/installation/
+
+# Sistema / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs e backups locais
+*.log
+*.bkp
+*.bak
+*.old
