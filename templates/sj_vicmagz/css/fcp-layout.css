@@ -25,6 +25,21 @@
 	}
 }
 
+/* Slider/banner: nunca fora da home (fallback se module assignment falhar) */
+body:not(.homepage) #yt_spotlight2 {
+	display: none !important;
+}
+
+/* Newsletter: só na home */
+body:not(.homepage) #yt_spotlight4 {
+	display: none !important;
+}
+
+/* Popular (position1): só na home */
+body:not(.homepage) #yt_spotlight3 {
+	display: none !important;
+}
+
 /* Paginação J6 → visual do tema (sem cortar números) */
 .pagination-warpper,
 .pagination-wrap,
@@ -173,10 +188,47 @@ ul.pagination > li.disabled > a {
 	background: transparent;
 }
 
+/* ==========================================================================
+   Grid / layout profissional — BS3 + Joomla 6
+   Evita: 1 coluna estreita, sidebar abaixo no desktop, overflow horizontal
+   ========================================================================== */
+
+/* Box model estável nas áreas de conteúdo */
+#content,
+#content *,
+#yt_component,
+#yt_component * {
+	box-sizing: border-box;
+}
+
+/* Mídia e tabelas nunca estouram a coluna */
+#yt_component img,
+#yt_component iframe,
+#yt_component embed,
+#yt_component object,
+#yt_component video,
+#content_main img,
+#content_main iframe {
+	max-width: 100%;
+	height: auto;
+}
+#yt_component .article-fulltext,
+#yt_component .article-intro,
+#content_main .item-page {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+#yt_component table {
+	max-width: 100%;
+}
+
 /* Conteúdo / artigos — card branco sobre o #content cinza (#f5f5f5) */
 body:not(.homepage) #content #content_main {
 	background: #fff;
 	padding: 30px 40px 40px;
+	min-width: 0;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 @media (max-width: 767px) {
 	body:not(.homepage) #content #content_main {
@@ -184,33 +236,406 @@ body:not(.homepage) #content #content_main {
 	}
 }
 
+/*
+ * Content + sidebar
+ * BS3 clearfix (::before/::after) NÃO podem virar flex items.
+ */
+@media (min-width: 992px) {
+	#content > .container > .row {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+	}
+	#content > .container > .row:before,
+	#content > .container > .row:after {
+		display: none !important;
+		content: none !important;
+	}
+	#content #content_main,
+	#content #content_left,
+	#content #content_right {
+		float: none !important;
+		min-width: 0;
+		max-width: 100%;
+	}
+	#content #content_main.col-md-8 {
+		flex: 0 0 66.66666667%;
+		max-width: 66.66666667%;
+		width: 66.66666667%;
+	}
+	#content #content_main.col-md-9 {
+		flex: 0 0 75%;
+		max-width: 75%;
+		width: 75%;
+	}
+	#content #content_main.col-md-6 {
+		flex: 0 0 50%;
+		max-width: 50%;
+		width: 50%;
+	}
+	#content #content_main.col-md-4 {
+		flex: 0 0 33.33333333%;
+		max-width: 33.33333333%;
+		width: 33.33333333%;
+	}
+	#content #content_main.col-md-12 {
+		flex: 0 0 100%;
+		max-width: 100%;
+		width: 100%;
+	}
+	#content #content_left.col-md-4,
+	#content #content_right.col-md-4,
+	#content #content_left.col-md-3,
+	#content #content_right.col-md-3 {
+		flex: 0 0 33.33333333%;
+		max-width: 33.33333333%;
+		width: 33.33333333%;
+		flex-shrink: 0;
+	}
+	#content #content_left.col-md-3,
+	#content #content_right.col-md-3 {
+		flex-basis: 25%;
+		max-width: 25%;
+		width: 25%;
+	}
+}
+/* Tablet / mobile: empilha (col-sm-12 do layout XML) */
+@media (max-width: 991px) {
+	#content > .container > .row {
+		display: block;
+	}
+	#content #content_main,
+	#content #content_left,
+	#content #content_right {
+		float: none !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		flex: none !important;
+	}
+	#content #content_right,
+	#content #content_left {
+		margin-top: 30px;
+	}
+}
+
 #yt_component .item-page,
-#yt_component .blog {
-	overflow: hidden;
+#yt_component .blog,
+#yt_component .blog-featured,
+#yt_component .tag-category,
+#yt_component .search,
+#yt_component .com-finder {
+	overflow: visible;
+	max-width: 100%;
+	min-width: 0;
 }
-/* Grade de artigos sem buracos (float BS3 + alturas diferentes) */
+
+/*
+ * Grade de artigos (blog / featured / category)
+ * Usa CSS Grid + classe cols-N já gerada pelo blog.php (mais estável que flex+BS3).
+ */
 .blog .items-row.row,
-.blog .items-leading.row {
-	display: flex;
-	flex-wrap: wrap;
-}
-.blog .items-row .item,
-.blog .items-leading .item {
-	float: none;
-}
-#yt_component .items-row {
+.blog .items-leading.row,
+.blog-featured .items-row.row,
+.blog-featured .items-leading.row {
+	display: grid !important;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	column-gap: 30px;
+	row-gap: 0;
+	align-items: stretch;
 	clear: both;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
 }
+.blog .items-row.cols-1,
+.blog .items-leading.cols-1,
+.blog-featured .items-row.cols-1,
+.blog-featured .items-leading.cols-1 {
+	grid-template-columns: minmax(0, 1fr);
+}
+.blog .items-row.cols-2,
+.blog .items-leading.cols-2,
+.blog-featured .items-row.cols-2,
+.blog-featured .items-leading.cols-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.blog .items-row.cols-3,
+.blog .items-leading.cols-3,
+.blog-featured .items-row.cols-3,
+.blog-featured .items-leading.cols-3 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.blog .items-row.cols-4,
+.blog .items-leading.cols-4,
+.blog-featured .items-row.cols-4,
+.blog-featured .items-leading.cols-4 {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.blog .items-row.row:before,
+.blog .items-row.row:after,
+.blog .items-leading.row:before,
+.blog .items-leading.row:after,
+.blog-featured .items-row.row:before,
+.blog-featured .items-row.row:after,
+.blog-featured .items-leading.row:before,
+.blog-featured .items-leading.row:after,
 #yt_component .items-row:before,
 #yt_component .items-row:after,
 #yt_component .items-leading:before,
 #yt_component .items-leading:after {
-	content: " ";
-	display: table;
+	display: none !important;
+	content: none !important;
 }
-#yt_component .items-row:after,
-#yt_component .items-leading:after {
-	clear: both;
+.blog .items-row .item,
+.blog .items-leading .item,
+.blog-featured .items-row .item,
+.blog-featured .items-leading .item {
+	float: none !important;
+	width: 100% !important;
+	max-width: 100% !important;
+	min-width: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	box-sizing: border-box;
+}
+@media (max-width: 767px) {
+	.blog .items-row.row,
+	.blog .items-leading.row,
+	.blog-featured .items-row.row,
+	.blog-featured .items-leading.row {
+		grid-template-columns: minmax(0, 1fr) !important;
+		column-gap: 0;
+	}
+}
+
+/*
+ * .media BS3 usa display:table-cell e pode inflar a linha.
+ * Em listagens: imagem em cima, texto embaixo.
+ */
+.blog .items-row .item .media,
+.blog .items-leading .item .media,
+.blog-featured .items-row .item .media,
+.blog-featured .items-leading .item .media {
+	display: block !important;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+}
+.blog .items-row .item .media > .pull-left,
+.blog .items-row .item .media > .pull-right,
+.blog .items-row .item .media > .item-image,
+.blog .items-row .item .media > figure,
+.blog .items-leading .item .media > .pull-left,
+.blog .items-leading .item .media > .pull-right,
+.blog .items-leading .item .media > .item-image,
+.blog .items-leading .item .media > figure,
+.blog-featured .items-row .item .media > .pull-left,
+.blog-featured .items-row .item .media > .pull-right,
+.blog-featured .items-row .item .media > .item-image,
+.blog-featured .items-row .item .media > figure,
+.blog-featured .items-leading .item .media > .pull-left,
+.blog-featured .items-leading .item .media > .pull-right,
+.blog-featured .items-leading .item .media > .item-image,
+.blog-featured .items-leading .item .media > figure,
+.blog .items-row .item .item-image,
+.blog .items-leading .item .item-image,
+.blog-featured .items-row .item .item-image,
+.blog-featured .items-leading .item .item-image,
+.blog .items-row .item figure.item-image,
+.blog .items-leading .item figure.item-image,
+.blog-featured .items-row .item figure.item-image,
+.blog-featured .items-leading .item figure.item-image {
+	float: none !important;
+	display: block !important;
+	width: 100% !important;
+	max-width: 100% !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.blog .items-row .item .item-image img,
+.blog .items-leading .item .item-image img,
+.blog-featured .items-row .item .item-image img,
+.blog-featured .items-leading .item .item-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+}
+.blog .items-row .item .media-body,
+.blog .items-leading .item .media-body,
+.blog-featured .items-row .item .media-body,
+.blog-featured .items-leading .item .media-body,
+.blog .items-row .item .article-text.media-body,
+.blog .items-leading .item .article-text.media-body,
+.blog-featured .items-row .item .article-text.media-body,
+.blog-featured .items-leading .item .article-text.media-body {
+	display: block !important;
+	float: none !important;
+	width: 100% !important;
+	max-width: 100% !important;
+	min-width: 0 !important;
+	overflow: hidden;
+	zoom: 1;
+}
+.blog .items-row .item .article-intro,
+.blog .items-leading .item .article-intro,
+.blog-featured .items-row .item .article-intro,
+.blog-featured .items-leading .item .article-intro {
+	max-width: 100%;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	text-align: center;
+	line-height: 1.55;
+	color: #666;
+}
+.blog .items-row .item .article-aside .article-info,
+.blog .items-leading .item .article-aside .article-info,
+.blog-featured .items-row .item .article-aside .article-info,
+.blog-featured .items-leading .item .article-aside .article-info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 4px 12px;
+	margin: 0 0 12px;
+	padding: 0;
+	list-style: none;
+}
+.blog .items-row .item .article-aside dd,
+.blog .items-leading .item .article-aside dd,
+.blog-featured .items-row .item .article-aside dd,
+.blog-featured .items-leading .item .article-aside dd {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	float: none;
+	margin: 0;
+	white-space: nowrap;
+}
+
+/* Tags / forms com class="row" — não herdam flex de grade */
+.tag-category form.row,
+#yt_component form.row,
+#adminForm.row {
+	display: block !important;
+	margin-left: 0;
+	margin-right: 0;
+}
+.tag-category form.row:before,
+.tag-category form.row:after,
+#yt_component form.row:before,
+#yt_component form.row:after,
+#adminForm.row:before,
+#adminForm.row:after {
+	display: none !important;
+	content: none !important;
+}
+
+/* Contato (2 colunas) */
+@media (min-width: 768px) {
+	.contact-ajax .ctajax-wrap > .row,
+	.contact .row.contact-form-map {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.contact-ajax .ctajax-wrap > .row:before,
+	.contact-ajax .ctajax-wrap > .row:after {
+		display: none !important;
+		content: none !important;
+	}
+	.contact-ajax .ctajax-element.col-sm-6,
+	.contact-ajax .ctajax-element.col-md-6 {
+		flex: 0 0 50%;
+		max-width: 50%;
+		width: 50%;
+		float: none;
+		min-width: 0;
+	}
+}
+@media (max-width: 767px) {
+	.contact-ajax .ctajax-element.col-sm-6,
+	.contact-ajax .ctajax-element.col-md-6 {
+		flex: 0 0 100%;
+		max-width: 100%;
+		width: 100% !important;
+		float: none;
+	}
+}
+
+/* Spotlight bottom (4 colunas) — mobile empilha */
+@media (max-width: 767px) {
+	#yt_bottom [class*="col-md-"],
+	#yt_bottom [class*="col-sm-"] {
+		width: 100% !important;
+		max-width: 100% !important;
+		float: none !important;
+		margin-bottom: 20px;
+	}
+}
+
+@media (min-width: 768px) {
+	#yt_spotlight1 > .container > .row,
+	#yt_spotlight3 > .container > .row,
+	#yt_bottom > .container > .row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+	}
+	#yt_spotlight1 > .container > .row:before,
+	#yt_spotlight1 > .container > .row:after,
+	#yt_spotlight3 > .container > .row:before,
+	#yt_spotlight3 > .container > .row:after,
+	#yt_bottom > .container > .row:before,
+	#yt_bottom > .container > .row:after {
+		display: none !important;
+		content: none !important;
+	}
+	#yt_spotlight1 > .container > .row > [class*="col-"],
+	#yt_spotlight3 > .container > .row > [class*="col-"],
+	#yt_bottom > .container > .row > [class*="col-"] {
+		float: none;
+		min-width: 0;
+	}
+	#yt_spotlight1 .col-sm-6 {
+		flex: 0 0 50%;
+		max-width: 50%;
+	}
+	#yt_bottom .col-md-3 {
+		flex: 0 0 25%;
+		max-width: 25%;
+	}
+}
+@media (max-width: 767px) {
+	#yt_spotlight1 > .container > .row,
+	#yt_spotlight3 > .container > .row,
+	#yt_bottom > .container > .row {
+		display: block;
+	}
+	#yt_spotlight1 .col-sm-6,
+	#yt_bottom .col-md-3 {
+		width: 100% !important;
+		max-width: 100% !important;
+		flex: none !important;
+	}
+}
+
+/* Artigo individual — tipografia e imagens estáveis */
+.item-page .article-fullimage,
+.item-page .pull-left.item-image,
+.item-page .pull-right.item-image {
+	max-width: 100%;
+}
+@media (max-width: 767px) {
+	.item-page .pull-left.item-image,
+	.item-page .pull-right.item-image {
+		float: none !important;
+		display: block;
+		width: 100% !important;
+		margin: 0 0 15px !important;
+	}
+	.item-page .article-aside .article-info dd {
+		display: inline-block;
+		margin-right: 10px;
+	}
 }
 
 /* Pinterest Pin It — canto superior esquerdo */
@@ -296,7 +721,8 @@ body:not(.homepage) #content #content_main {
 }
 .mb-3 { margin-bottom: 1rem !important; }
 .me-2 { margin-right: 0.5rem !important; }
-.w-100 { width: 100% !important; }
+/* Não aplicar em colunas do grid */
+.w-100:not([class*="col-"]) { width: 100% !important; }
 
 /* Form controls J6 em páginas internas */
 .form-control {
@@ -351,6 +777,25 @@ body:not(.homepage) #content #content_main {
 #yt_bottom .menu-horizontal > li {
 	display: inline-block;
 	margin: 0 10px;
+}
+
+/* Top search — não estoura no mobile */
+@media (max-width: 767px) {
+	#top2 .k2SearchBlock.search-top,
+	#top2 .module.search-top,
+	#top2 .fcp-search-form {
+		float: none !important;
+		max-width: 100% !important;
+		width: 100% !important;
+		margin: 10px 0 0;
+	}
+	#yt_header .logo,
+	#yt_header [class*="col-"] {
+		width: 100% !important;
+		max-width: 100% !important;
+		float: none !important;
+		text-align: center;
+	}
 }
 
 /* Tipografia unificada Serenity */

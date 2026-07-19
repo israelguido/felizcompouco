@@ -167,3 +167,21 @@
 	position:relative;
 }
 }
+
+/* Mobile: imagem + texto empilhados */
+@media screen and (max-width: 767px) {
+	.mv-tab-content .tab-item .tab-content-left,
+	.mv-tab-content .tab-item .tab-content-right {
+		float: none !important;
+		max-width: 100% !important;
+		width: 100% !important;
+	}
+	.mv-tab-content .tab-item .tab-content-left .tab-content-left-img {
+		margin-right: 0;
+		margin-bottom: 10px;
+	}
+	.mv-tab-content .tab-item .tab-content-left img {
+		width: 100%;
+		height: auto;
+	}
+}

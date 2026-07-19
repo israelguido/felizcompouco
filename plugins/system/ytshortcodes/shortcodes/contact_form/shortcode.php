@@ -133,6 +133,10 @@ function contact_formYTShortcode ($atts,$content = null)
         }
 
         if (isset($_POST['email'])) {
+        	// Bloqueado: shortcode legado enviava e-mail sem CSRF/captcha/rate limit.
+        	$return .= '<div class="yt-contact-form-error" style="color:#c00;margin:10px 0;">Envio desativado por segurança.</div>';
+        	$_POST = array();
+        } else if (false && isset($_POST['email'])) {
         	$name='';
         	$email1='';
         	$message ='';

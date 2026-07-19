@@ -16,28 +16,11 @@ $subject = $params->get('email_template_subject');
 $content_email = $params->get('content_email');
 $is_ajax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
 if ($is_ajax && isset($_POST['is_newletter']) && $_POST['is_newletter']) {
-    $email = $_POST['email'];
-    // Send email
-    $mailer = JFactory::getMailer();
-    $config = JFactory::getConfig();
-    $from = $config->get('mailfrom');
-    $fromname = $config->get('fromname');
-    $sender = array(
-        $from,
-        $fromname
-    );
-    $mailer->setSender($sender);
-    $mailer->addRecipient($email);
-    $mailer->Subject = $subject;
-
-    $mailer->isHTML(true);
-    $mailer->setBody($content_email);
-    $send = $mailer->Send();
-    if ($send !== true) {
-        echo 'Error sending email: ' . $send->__toString();
-    } else {
-        echo 'Successful! Thank you for booking ';
-    }
+	// Bloqueado: endpoint antigo era open mail relay (sem CSRF/captcha/rate limit).
+	// Use mod_fcp_newsletter no lugar deste módulo.
+	header('Content-Type: text/plain; charset=utf-8', true, 403);
+	echo 'Forbidden';
+	jexit();
 }
 require JModuleHelper::getLayoutPath($module->module, $layout);
 

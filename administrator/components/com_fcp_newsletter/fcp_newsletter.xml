@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" method="upgrade">
+	<name>COM_FCP_NEWSLETTER</name>
+	<author>Feliz com Pouco</author>
+	<version>1.0.0</version>
+	<description>Lista de e-mails inscritos na newsletter da home.</description>
+	<namespace path="src">FelizComPouco\Component\Fcpnewsletter</namespace>
+	<administration>
+		<menu link="option=com_fcp_newsletter">Newsletter</menu>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<folder>forms</folder>
+			<folder>services</folder>
+			<folder>src</folder>
+			<folder>tmpl</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="pt-BR">language/pt-BR/com_fcp_newsletter.ini</language>
+			<language tag="pt-BR">language/pt-BR/com_fcp_newsletter.sys.ini</language>
+			<language tag="en-GB">language/en-GB/com_fcp_newsletter.ini</language>
+			<language tag="en-GB">language/en-GB/com_fcp_newsletter.sys.ini</language>
+		</languages>
+	</administration>
+</extension>

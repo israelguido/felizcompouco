@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="filter">
+		<field
+			name="search"
+			type="text"
+			label="JSEARCH_FILTER"
+			hint="COM_FCP_NEWSLETTER_FILTER_SEARCH_DESC"
+			class="js-stools-search-string"
+		/>
+		<field
+			name="status"
+			type="list"
+			label="JSTATUS"
+			onchange="this.form.submit();"
+			>
+			<option value="">JOPTION_SELECT_PUBLISHED</option>
+			<option value="1">COM_FCP_NEWSLETTER_STATUS_ACTIVE</option>
+			<option value="0">COM_FCP_NEWSLETTER_STATUS_INACTIVE</option>
+		</field>
+	</fields>
+	<fields name="list">
+		<field
+			name="fullordering"
+			type="list"
+			label="JGLOBAL_SORT_BY"
+			default="a.created DESC"
+			onchange="this.form.submit();"
+			>
+			<option value="">JGLOBAL_SORT_BY</option>
+			<option value="a.created DESC">COM_FCP_NEWSLETTER_CREATED_DESC</option>
+			<option value="a.created ASC">COM_FCP_NEWSLETTER_CREATED_ASC</option>
+			<option value="a.email ASC">COM_FCP_NEWSLETTER_EMAIL_ASC</option>
+			<option value="a.email DESC">COM_FCP_NEWSLETTER_EMAIL_DESC</option>
+		</field>
+		<field
+			name="limit"
+			type="limitbox"
+			label="JGLOBAL_LIST_LIMIT"
+			default="25"
+			onchange="this.form.submit();"
+		/>
+	</fields>
+</form>

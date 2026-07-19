@@ -57,8 +57,11 @@ $info    = $params->get('info_block_position', 0);
 
 			<?php if ($params->get('show_intro')) : ?>
 				<div class="article-intro">
-					<?php //echo $this->item->introtext; ?>
-					<?php echo substr( $this->item->introtext,  0, 200); ?>
+					<?php
+					// Texto puro truncado — substr() em HTML cortava tags e quebrava as colunas
+					$intro = trim(preg_replace('/\s+/', ' ', strip_tags($this->item->introtext)));
+					echo htmlspecialchars(JHtml::_('string.truncate', $intro, 180, true, false), ENT_QUOTES, 'UTF-8');
+					?>
 				</div>
 			<?php endif; ?>
 

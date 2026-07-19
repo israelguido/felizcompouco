@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>mod_fcp_newsletter</name>
+	<author>Feliz com Pouco</author>
+	<version>1.1.0</version>
+	<description>Newsletter da home com layout moderno, imagem de fundo administrável e captcha anti-spam.</description>
+	<files>
+		<filename module="mod_fcp_newsletter">mod_fcp_newsletter.php</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>assets</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" label="Conteúdo">
+				<field name="heading" type="text" default="Newsletter"
+					label="Título" description="Exibido no banner (o título do módulo no chrome fica oculto)." />
+				<field name="intro" type="textarea" rows="2"
+					default="Receba novidades, inspirações e ofertas no seu e-mail."
+					label="Texto de apoio" />
+				<field name="placeholder" type="text" default="Seu e-mail" label="Placeholder do e-mail" />
+				<field name="button_text" type="text" default="Assinar" label="Texto do botão" />
+				<field name="layout" type="modulelayout" label="Layout" class="form-select" />
+			</fieldset>
+			<fieldset name="appearance" label="Aparência">
+				<field name="background" type="media" preview="true"
+					label="Imagem de fundo"
+					description="Se vazio, usa a imagem padrão do template (bg-newsletter.jpg)." />
+				<field name="overlay" type="integer" default="45" min="0" max="80" step="5"
+					label="Escurecimento do fundo (%)"
+					description="Quanto maior, mais legível o texto sobre a foto." />
+			</fieldset>
+			<fieldset name="security" label="Anti-spam">
+				<field name="enable_captcha" type="radio" default="1" layout="joomla.form.field.radio.switcher"
+					label="Ativar captcha">
+					<option value="0">Não</option>
+					<option value="1">Sim</option>
+				</field>
+				<field name="captcha" type="plugins" folder="captcha" default="powcaptcha"
+					label="Plugin de captcha"
+					description="Recomendado: Proof of Work Captcha (já vem no Joomla 6, sem chave Google)."
+					showon="enable_captcha:1" />
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="moduleclass_sfx" type="text" label="Sufixo de classe" default="newsletters" />
+				<field name="cache" type="list" default="0" label="Cache">
+					<option value="0">Não</option>
+					<option value="1">Sim</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

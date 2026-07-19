@@ -1,0 +1,324 @@
+/*
+ * Newsletter hero — UM fundo só (no módulo), section do tema sem imagem.
+ * Specifiers fortes para vencer template-serenity.css em produção.
+ */
+
+/* 1) Remove o background antigo do VicMagz na section */
+html body #yt_spotlight4,
+html body section#yt_spotlight4.block {
+	background: none !important;
+	background-image: none !important;
+	background-color: transparent !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	color: inherit !important;
+}
+
+/* 2) Section full-bleed: sem “caixa” do container Bootstrap */
+html body #yt_spotlight4 > .container,
+html body #yt_spotlight4 .container {
+	width: 100% !important;
+	max-width: 100% !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	background: transparent !important;
+}
+html body #yt_spotlight4 > .container > .row,
+html body #yt_spotlight4 .row {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	background: transparent !important;
+}
+html body #yt_spotlight4 [class*="col-"],
+html body #yt_spotlight4 #position2 {
+	width: 100% !important;
+	max-width: 100% !important;
+	float: none !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	background: transparent !important;
+}
+html body #yt_spotlight4 .module,
+html body #yt_spotlight4 .module.newsletters,
+html body #yt_spotlight4 .moduletable.newsletters {
+	background: transparent !important;
+	background-image: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	box-shadow: none !important;
+}
+html body #yt_spotlight4 .module > .modtitle {
+	display: none !important;
+}
+html body #yt_spotlight4 .module > .modcontent {
+	padding: 0 !important;
+	margin: 0 !important;
+	background: transparent !important;
+}
+
+/* 3) Único fundo: o hero do módulo */
+.fcp-newsletter--hero {
+	--fcp-nl-accent: #91a7d0;
+	--fcp-nl-accent-dark: #6f88b5;
+	--fcp-nl-overlay: 45;
+	box-sizing: border-box;
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	width: 100% !important;
+	max-width: 100% !important;
+	min-height: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 48px 20px;
+	text-align: center;
+	color: #fff;
+	background-color: #2a3340 !important;
+	background-image: var(--fcp-nl-bg) !important;
+	background-position: center center !important;
+	background-size: cover !important;
+	background-repeat: no-repeat !important;
+	background-attachment: scroll !important;
+}
+.fcp-newsletter--hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background: linear-gradient(
+		180deg,
+		rgba(20, 28, 38, calc(var(--fcp-nl-overlay) / 100)) 0%,
+		rgba(20, 28, 38, calc((var(--fcp-nl-overlay) + 15) / 100)) 100%
+	);
+	pointer-events: none;
+}
+.fcp-newsletter__inner {
+	position: relative;
+	z-index: 1;
+	width: min(560px, 100%);
+	margin: 0 auto;
+	background: transparent !important;
+	background-image: none !important;
+}
+.fcp-newsletter__eyebrow {
+	margin: 0 0 6px;
+	font-size: 11px;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	opacity: 0.85;
+	font-family: Montserrat, Helvetica, Arial, sans-serif;
+}
+.fcp-newsletter__title {
+	margin: 0 0 8px;
+	color: #fff !important;
+	font-family: Montserrat, Helvetica, Arial, sans-serif;
+	font-weight: 700;
+	font-size: clamp(22px, 3.2vw, 30px);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	line-height: 1.15;
+	background: transparent !important;
+}
+.fcp-newsletter__intro {
+	margin: 0 auto 20px;
+	max-width: 40ch;
+	font-size: 15px;
+	line-height: 1.45;
+	opacity: 0.92;
+}
+.fcp-newsletter__form {
+	display: block;
+	background: transparent !important;
+}
+.fcp-newsletter__row {
+	display: flex !important;
+	flex-wrap: nowrap;
+	align-items: center !important;
+	justify-content: center;
+	gap: 10px;
+	width: 100%;
+	max-width: 480px;
+	margin: 0 auto;
+}
+html body .fcp-newsletter--hero .fcp-newsletter__email,
+html body .fcp-newsletter--hero input.fcp-newsletter__email[type="email"] {
+	box-sizing: border-box !important;
+	flex: 1 1 auto !important;
+	width: auto !important;
+	min-width: 0 !important;
+	max-width: none !important;
+	height: 48px !important;
+	min-height: 48px !important;
+	max-height: 48px !important;
+	margin: 0 !important;
+	border: 0 !important;
+	border-radius: 3px !important;
+	padding: 0 16px !important;
+	line-height: 48px !important;
+	font-size: 15px !important;
+	vertical-align: middle !important;
+	color: #243040 !important;
+	background: #fff !important;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12) !important;
+	appearance: none;
+	-webkit-appearance: none;
+}
+html body .fcp-newsletter--hero .fcp-newsletter__email:focus {
+	outline: 2px solid var(--fcp-nl-accent) !important;
+	outline-offset: 2px;
+}
+html body .fcp-newsletter--hero .fcp-newsletter__btn,
+html body .fcp-newsletter--hero button.fcp-newsletter__btn {
+	box-sizing: border-box !important;
+	flex: 0 0 auto !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: auto !important;
+	height: 48px !important;
+	min-height: 48px !important;
+	max-height: 48px !important;
+	min-width: 128px !important;
+	margin: 0 !important;
+	border: 0 !important;
+	border-radius: 3px !important;
+	padding: 0 24px !important;
+	line-height: 1 !important;
+	font-family: Montserrat, Helvetica, Arial, sans-serif !important;
+	font-size: 12px !important;
+	font-weight: 700 !important;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	vertical-align: middle !important;
+	color: #fff !important;
+	cursor: pointer;
+	background: var(--fcp-nl-accent) !important;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16) !important;
+	transition: background 0.2s ease, transform 0.15s ease;
+}
+html body .fcp-newsletter--hero .fcp-newsletter__btn:hover {
+	background: var(--fcp-nl-accent-dark) !important;
+	color: #fff !important;
+}
+html body .fcp-newsletter--hero .fcp-newsletter__btn:active {
+	transform: translateY(1px);
+}
+html body .fcp-newsletter--hero .fcp-newsletter__btn[disabled] {
+	opacity: 0.7;
+	cursor: wait;
+}
+.fcp-newsletter__captcha-wrap {
+	display: flex;
+	justify-content: center;
+	margin-top: 14px;
+}
+.fcp-newsletter__captcha-wrap altcha-widget {
+	max-width: 100%;
+}
+
+/* Toast — canto superior direito */
+.fcp-nl-toast-host {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 100000;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 10px;
+	width: min(360px, calc(100vw - 32px));
+	pointer-events: none;
+}
+.fcp-nl-toast {
+	pointer-events: auto;
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	width: 100%;
+	padding: 14px 16px;
+	border-radius: 6px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+	font-family: Montserrat, Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #fff;
+	opacity: 0;
+	transform: translateX(16px);
+	transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.fcp-nl-toast.is-in {
+	opacity: 1;
+	transform: translateX(0);
+}
+.fcp-nl-toast.is-out {
+	opacity: 0;
+	transform: translateX(16px);
+}
+.fcp-nl-toast.is-ok {
+	background: #2e7d46;
+}
+.fcp-nl-toast.is-err {
+	background: #b33a3a;
+}
+.fcp-nl-toast__text {
+	flex: 1 1 auto;
+}
+.fcp-nl-toast__close {
+	flex: 0 0 auto;
+	margin: -4px -4px 0 0;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	font-size: 22px;
+	line-height: 1;
+	cursor: pointer;
+	opacity: 0.85;
+}
+.fcp-nl-toast__close:hover {
+	opacity: 1;
+}
+
+.fcp-newsletter__hp {
+	position: absolute !important;
+	left: -9999px !important;
+	width: 1px !important;
+	height: 1px !important;
+	overflow: hidden !important;
+}
+.fcp-newsletter .visually-hidden {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+@media (max-width: 575px) {
+	.fcp-newsletter--hero {
+		min-height: 220px;
+		padding: 36px 16px;
+	}
+	.fcp-newsletter__row {
+		flex-wrap: wrap !important;
+		max-width: 320px;
+	}
+	html body .fcp-newsletter--hero .fcp-newsletter__email,
+	html body .fcp-newsletter--hero input.fcp-newsletter__email[type="email"],
+	html body .fcp-newsletter--hero .fcp-newsletter__btn,
+	html body .fcp-newsletter--hero button.fcp-newsletter__btn {
+		width: 100% !important;
+		flex: 1 1 100% !important;
+	}
+	.fcp-nl-toast-host {
+		top: 12px;
+		right: 12px;
+		left: 12px;
+		width: auto;
+		align-items: stretch;
+	}
+}

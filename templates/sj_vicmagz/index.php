@@ -67,7 +67,9 @@ if($yt->getParam('comingsoon_mode')) header("Location: ".$baseUrl."?tmpl=comings
 	<?php 
 	// Include css, js
 	include_once (J_TEMPLATEDIR.J_SEPARATOR.'includes'.J_SEPARATOR.'head.php');
-	$doc->addStyleSheet($this->baseurl . 'templates/' . $this->template . '/css/fcp-layout.css');
+	$fcpLayoutCss = JPATH_THEMES . '/' . $this->template . '/css/fcp-layout.css';
+	$fcpLayoutVer = is_file($fcpLayoutCss) ? filemtime($fcpLayoutCss) : time();
+	$doc->addStyleSheet($this->baseurl . 'templates/' . $this->template . '/css/fcp-layout.css?v=' . $fcpLayoutVer);
 	$doc->addScript($this->baseurl . 'templates/' . $this->template . '/js/fcp-pinterest.js');
 	if ($yt->isHomePage()) {
 		$doc->addStyleSheet($this->baseurl . 'templates/' . $this->template . '/css/fcp-home.css');

@@ -30,8 +30,6 @@ $modClass = htmlspecialchars((string) $params->get('moduleclass_sfx', ''), ENT_Q
 				</li>
 			<?php endforeach; ?>
 		</ul>
-	<?php else : ?>
-		<p class="fcp-ig__empty">Nenhuma foto configurada.</p>
 	<?php endif; ?>
 
 	<?php if ($showFollow) : ?>

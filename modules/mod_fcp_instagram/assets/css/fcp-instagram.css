@@ -13,11 +13,13 @@
 	box-sizing: border-box;
 	padding: 2px;
 	float: none;
+	min-width: 0;
+	flex: 0 0 auto;
 }
-.fcp-ig--cols-2 .fcp-ig__item { width: 50%; }
-.fcp-ig--cols-3 .fcp-ig__item { width: 33.333%; }
-.fcp-ig--cols-4 .fcp-ig__item { width: 25%; }
-.fcp-ig--cols-6 .fcp-ig__item { width: 16.666%; }
+.fcp-ig--cols-2 .fcp-ig__item { flex: 0 0 50%; width: 50%; max-width: 50%; }
+.fcp-ig--cols-3 .fcp-ig__item { flex: 0 0 33.333%; width: 33.333%; max-width: 33.333%; }
+.fcp-ig--cols-4 .fcp-ig__item { flex: 0 0 25%; width: 25%; max-width: 25%; }
+.fcp-ig--cols-6 .fcp-ig__item { flex: 0 0 16.666%; width: 16.666%; max-width: 16.666%; }
 
 .fcp-ig__link {
 	display: block;
@@ -91,6 +93,23 @@
 @media (max-width: 767px) {
 	.fcp-ig--cols-6 .fcp-ig__item,
 	.fcp-ig--cols-4 .fcp-ig__item {
+		flex: 0 0 33.333%;
 		width: 33.333%;
+		max-width: 33.333%;
+	}
+	.fcp-ig--cols-3 .fcp-ig__item,
+	.fcp-ig--cols-2 .fcp-ig__item {
+		flex: 0 0 50%;
+		width: 50%;
+		max-width: 50%;
+	}
+}
+@media (max-width: 480px) {
+	.fcp-ig--cols-6 .fcp-ig__item,
+	.fcp-ig--cols-4 .fcp-ig__item,
+	.fcp-ig--cols-3 .fcp-ig__item {
+		flex: 0 0 50%;
+		width: 50%;
+		max-width: 50%;
 	}
 }

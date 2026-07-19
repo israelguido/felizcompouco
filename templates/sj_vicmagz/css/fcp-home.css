@@ -13,37 +13,30 @@
 }
 .moduletable.newsletters,
 .module.newsletters {
-	background: url('../images/bg/bg-newsletter.jpg') center/cover no-repeat;
-	padding: 40px 20px;
+	/* Fundo/hero agora vem do mod_fcp_newsletter (--fcp-nl-bg) */
+	background: transparent;
+	padding: 0;
 	text-align: center;
 	color: #fff;
 }
-.moduletable.newsletters h3,
-.module.newsletters .page-header h3,
-.module.newsletters h3 {
-	color: #fff !important;
-	letter-spacing: 0.04em;
-	font-size: 22px;
-	font-family: Montserrat, Helvetica, Arial, sans-serif;
-	font-weight: bold;
-	margin-bottom: 15px;
-	text-transform: uppercase;
+
+/* Tema VicMagz pintava o spotlight inteiro com a foto (tamanho natural = “imensa”) */
+#yt_spotlight4 {
+	background: transparent !important;
+	padding: 0 !important;
+	color: inherit;
 }
-.fcp-newsletter input[type=email] {
-	min-width: 280px;
-	height: 42px;
-	border: 0;
-	padding: 0 12px;
-	margin-right: 8px;
-	vertical-align: middle;
+#yt_spotlight4 > .container {
+	width: 100% !important;
+	max-width: 100% !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
-.fcp-newsletter .btn-color {
-	height: 42px;
-	border: 0;
-	padding: 0 22px;
-	text-transform: uppercase;
-	vertical-align: middle;
-	color: #fff;
+#yt_spotlight4 > .container > .row {
+	margin: 0 !important;
+}
+#yt_spotlight4 #position2 {
+	padding: 0 !important;
 }
 .itemsPopular .moduleItemReadMore {
 	display: inline-block;

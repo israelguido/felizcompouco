@@ -14,7 +14,8 @@ $base = Uri::root(true) . '/modules/mod_fcp_articles/assets';
 $doc->addStyleSheet($base . '/css/style.css');
 $doc->addStyleSheet($base . '/css/css3.css');
 $doc->addStyleSheet($base . '/css/owl.carousel.css');
-$doc->addStyleSheet($base . '/css/fcp-slider.css');
+$fcpSliderCss = JPATH_ROOT . '/modules/mod_fcp_articles/assets/css/fcp-slider.css';
+$doc->addStyleSheet($base . '/css/fcp-slider.css', ['version' => is_file($fcpSliderCss) ? filemtime($fcpSliderCss) : null]);
 
 $tag_id = 'sj_extra_slider_' . (int) $module->id;
 $theme  = $params->get('theme', 'style1');

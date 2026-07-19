@@ -55,17 +55,12 @@ Example: Set columns  on Mobile, tablet, desktops
 				<position class="col-sm-12" type="modules" style="ytmod" >position1</position>
 			</positions>
 		</spotlight3>
-		<spotlight4 html5tag="section" order="6" id="yt_spotlight4">
-			<positions>
-				<position class="col-sm-12" type="modules" style="ytmod" >position2</position>
-			</positions>
-		</spotlight4>
-		<breadcrumb html5tag="section" order="7" id="yt_breadcrumb">
+		<breadcrumb html5tag="section" order="6" id="yt_breadcrumb">
 			<positions>
 				<position   class="col-sm-12" type="modules"  style="ytmod" >breadcrumb</position>
 			</positions>
 		</breadcrumb>
-		<content html5tag="section" order="8" id="content" showDivTop="0" showDivBottom="0">
+		<content html5tag="section" order="7" id="content" showDivTop="0" showDivBottom="0">
 			<positions>
 				<position group="left"  type="modules" style="ytmod" >left</position>
 				<position group="main"  type="message"></position>
@@ -74,6 +69,11 @@ Example: Set columns  on Mobile, tablet, desktops
 				<position group="right" type="modules" style="ytmod" >right</position>
 			</positions>
 		</content>
+		<spotlight4 html5tag="section" order="8" id="yt_spotlight4">
+			<positions>
+				<position class="col-sm-12" type="modules" style="ytmod" >position2</position>
+			</positions>
+		</spotlight4>
 		<spotlight5 html5tag="section" order="9" id="yt_spotlight5">
 			<positions>
 				<position class="col-sm-12" type="modules" style="ytmod" >position4</position>

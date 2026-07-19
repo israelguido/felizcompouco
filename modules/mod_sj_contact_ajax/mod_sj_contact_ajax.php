@@ -51,54 +51,10 @@ $currentSession = JFactory::getSession();
 if ($list != false) {
 	$is_ajax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
 	if ($is_ajax) {
-		$ctajax_modid = JRequest::getVar('ctajax_modid', null);
-		if ($ctajax_modid == $module->id) {
-			if (isset($_POST['task'])) {
-				if ($_POST['task'] == 'checkcaptcha') {
-					$ss_c = $currentSession->get('codeCaptcha' . $module->id);
-					$result = new stdClass();
-					if ($_POST['captcha'] != $ss_c) {
-						$result->valid = false;
-					} else {
-						$result->valid = true;
-					}
-					echo json_encode($result);
-					die();
-				}
-				if ($_POST['task'] == 'sendmail') {
-					$mail_to = $list->email_to;
-					if ($captcha_dis == 1) {
-						if ($captcha_disable == 1 && $user->id != 0) {
-						} else {
-							if ($captcha_type == 0) {
-								JPluginHelper::importPlugin('captcha');
-								$dispatcher = JDispatcher::getInstance();
-								if(isset($_POST['recaptcha_challenge'])){
-									JRequest::setVar('recaptcha_challenge_field', $_POST['recaptcha_challenge']);
-								}
-								if(isset($_POST['recaptcha_response'])){
-									JRequest::setVar('recaptcha_response_field', $_POST['recaptcha_response']);
-									$res = $dispatcher->trigger('onCheckAnswer', $_POST['recaptcha_response']);
-								}
-								if(isset($_POST['captchaResponse'])){
-									JRequest::setVar('g-recaptcha-response', $_POST['captchaResponse']);
-									$res = $dispatcher->trigger('onCheckAnswer', $_POST['captchaResponse']);
-								}
-								
-								$result = new stdClass();
-								if (!$res[0]) {
-									$result->error_captcha = 0;
-									echo json_encode($result);
-								}
-							}
-							ContactAjax::_processSendMail($mail_to);
-						}
-					}else{
-						ContactAjax::_processSendMail($mail_to);
-					}
-				}
-			}
-		}
+		// Bloqueado: endpoint legado sem CSRF/rate limit (risco de spam/flood).
+		header('Content-Type: application/json; charset=utf-8', true, 403);
+		echo json_encode(['error' => 'Forbidden', 'message' => 'Contact AJAX desativado por segurança.']);
+		jexit();
 	} else {
 		require JModuleHelper::getLayoutPath($module->module, $layout);
 		require JModuleHelper::getLayoutPath($module->module, $layout . '_js');
