@@ -1,12 +1,10 @@
 name: Deploy production
 
 on:
-  # Só quando um PR para master é mergeado (evita deploy duplo com push)
-  pull_request:
+  # Commit direto na master OU merge de PR (o GitHub gera push na master)
+  push:
     branches:
       - master
-    types:
-      - closed
 
   # Rodar manualmente em Actions → Run workflow
   workflow_dispatch:
@@ -20,11 +18,6 @@ jobs:
     name: Deploy to production
     runs-on: [self-hosted, Linux, X64]
     timeout-minutes: 15
-
-    # Ignora PR fechado sem merge
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
 
     env:
       # Ajuste se o caminho no servidor for diferente
