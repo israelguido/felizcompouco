@@ -5,7 +5,6 @@
 .warden/
 
 # Migração / dumps (SQL, logs, zips)
-migration/
 migrations/
 *.sql
 *.sql.gz
@@ -19,7 +18,6 @@ migrations/
 /administrator/cache/
 /administrator/logs/
 /logs/
-/migration/
 
 # Uploads e mídia gerada
 /images/

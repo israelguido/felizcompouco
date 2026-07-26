@@ -6,12 +6,12 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 
-/** @var \FelizComPouco\Component\Fcpguia\Administrator\View\Item\HtmlView $this */
+/** @var \FelizComPouco\Component\Fcp_guia\Administrator\View\Item\HtmlView $this */
 
 $wa = $this->getDocument()->getWebAssetManager();
 $wa->useScript('keepalive')->useScript('form.validate');
 ?>
-<form action="<?php echo Route::_('index.php?option=com_fcp_guia&layout=edit&id=' . (int) $this->item->id); ?>"
+<form action="<?php echo Route::_('index.php?option=com_fcp_guia&view=item&layout=edit&id=' . (int) $this->item->id); ?>"
 	method="post" name="adminForm" id="item-form" aria-label="<?php echo Text::_('COM_FCP_GUIA_ITEM_' . ((int) $this->item->id === 0 ? 'NEW' : 'EDIT'), true); ?>"
 	class="form-validate">
 

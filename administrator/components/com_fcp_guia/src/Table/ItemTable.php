@@ -1,5 +1,5 @@
 <?php
-namespace FelizComPouco\Component\Fcpguia\Administrator\Table;
+namespace FelizComPouco\Component\Fcp_guia\Administrator\Table;
 
 defined('_JEXEC') or die;
 
