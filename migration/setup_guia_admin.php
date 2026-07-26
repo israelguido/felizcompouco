@@ -297,16 +297,24 @@ foreach (['pt-BR', 'en-GB'] as $tag) {
 	}
 }
 
-// Rebuild PSR-4 namespace map
-$rootEsc = var_export($root, true);
-passthru('php -r ' . escapeshellarg(
-	'define("_JEXEC",1);'
-	. 'define("JPATH_BASE",' . $rootEsc . ');'
-	. 'require JPATH_BASE."/includes/defines.php";'
-	. 'require JPATH_LIBRARIES."/vendor/autoload.php";'
-	. 'require JPATH_LIBRARIES."/namespacemap.php";'
-	. 'echo ((new JNamespacePsr4Map())->create() ? "Namespace map OK\n" : "Namespace map FAIL\n");'
-));
+// Rebuild PSR-4 namespace map (cache não vai no Git — obrigatório após deploy)
+$rebuild = $root . '/migration/rebuild_namespaces.php';
+if (is_file($rebuild)) {
+	passthru('php ' . escapeshellarg($rebuild), $rebuildCode);
+	if (!empty($rebuildCode)) {
+		fwrite(STDERR, "Falha ao regenerar namespace map\n");
+	}
+} else {
+	$rootEsc = var_export($root, true);
+	passthru('php -r ' . escapeshellarg(
+		'define("_JEXEC",1);'
+		. 'define("JPATH_BASE",' . $rootEsc . ');'
+		. 'require JPATH_BASE."/includes/defines.php";'
+		. 'require JPATH_LIBRARIES."/vendor/autoload.php";'
+		. 'require JPATH_LIBRARIES."/namespacemap.php";'
+		. 'echo ((new JNamespacePsr4Map())->create() ? "Namespace map OK\n" : "Namespace map FAIL\n");'
+	));
+}
 
 // Clear caches
 foreach ([$root . '/cache', $root . '/administrator/cache'] as $dir) {
