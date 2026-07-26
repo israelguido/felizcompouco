@@ -57,6 +57,11 @@
 #position4 .module .modtitle {
 	text-align: center;
 	text-transform: uppercase;
+	color: #D09ED3;
+}
+#yt_spotlight5 .module h3.modtitle .styletitle,
+#position4 .module h3.modtitle .styletitle {
+	color: #D09ED3;
 }
 .sj-extra-slider.slideshow .owl-controls .owl-buttons div,
 .sj-extra-slider.slideshow .owl-nav .owl-prev,
