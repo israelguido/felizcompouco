@@ -23,7 +23,7 @@ concurrency:
 jobs:
   deploy:
     name: Deploy to production
-    runs-on: [self-hosted, linux, production]
+    runs-on: [self-hosted, Linux, X64]
     timeout-minutes: 15
 
     # Em PR: só faz deploy se foi mergeado (não quando só fecha sem merge)
