@@ -1,0 +1,81 @@
+name: Deploy production
+
+on:
+  # Commit / merge direto na master
+  push:
+    branches:
+      - master
+
+  # Pull request mergeado na master
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+  # Rodar manualmente em Actions → Run workflow
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: [self-hosted, linux, production]
+    timeout-minutes: 15
+
+    # Em PR: só faz deploy se foi mergeado (não quando só fecha sem merge)
+    if: >
+      github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+
+    env:
+      # Ajuste se o caminho no servidor for diferente
+      DEPLOY_PATH: /home/felizcompouco/htdocs/www.felizcompouco.com.br
+
+    steps:
+      - name: Atualizar código
+        working-directory: ${{ env.DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          echo "== Evento: ${{ github.event_name }} =="
+          echo "== Git status (antes) =="
+          git status -sb || true
+          git remote -v
+
+          git fetch origin
+          git checkout master
+          git reset --hard origin/master
+
+          echo "== Commit deployado =="
+          git log -1 --oneline
+
+      - name: Regenerar namespace map (Joomla)
+        working-directory: ${{ env.DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          if [ -f migration/rebuild_namespaces.php ]; then
+            php migration/rebuild_namespaces.php
+          else
+            php -r 'define("_JEXEC",1); define("JPATH_BASE", getcwd()); require "includes/defines.php"; require "libraries/vendor/autoload.php"; require "libraries/namespacemap.php"; echo (new JNamespacePsr4Map())->create() ? "Namespace map OK\n" : "Namespace map FAIL\n";'
+          fi
+
+      - name: Limpar cache Joomla
+        working-directory: ${{ env.DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          if [ -f cli/joomla.php ]; then
+            php cli/joomla.php cache:clean || true
+          fi
+          find administrator/cache cache -type f ! -name 'index.html' ! -name 'autoload_psr4.php' -delete 2>/dev/null || true
+
+      - name: Confirmar Guia component
+        working-directory: ${{ env.DEPLOY_PATH }}
+        run: |
+          set -euo pipefail
+          test -f administrator/components/com_fcp_guia/src/Extension/GuiaComponent.php
+          grep -q 'Fcp_guia' administrator/cache/autoload_psr4.php
+          echo "Deploy OK"
