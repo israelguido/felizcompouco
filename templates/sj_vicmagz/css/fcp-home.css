@@ -49,6 +49,15 @@
 	text-align: center;
 	text-transform: uppercase;
 }
+
+/* Guia de Fornecedores (position4 / spotlight5) — título centralizado */
+#yt_spotlight5 .module h3.modtitle,
+#yt_spotlight5 .module .modtitle,
+#position4 .module h3.modtitle,
+#position4 .module .modtitle {
+	text-align: center;
+	text-transform: uppercase;
+}
 .sj-extra-slider.slideshow .owl-controls .owl-buttons div,
 .sj-extra-slider.slideshow .owl-nav .owl-prev,
 .sj-extra-slider.slideshow .owl-nav .owl-next {
