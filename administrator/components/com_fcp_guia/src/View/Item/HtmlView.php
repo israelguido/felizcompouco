@@ -1,5 +1,5 @@
 <?php
-namespace FelizComPouco\Component\Fcpguia\Administrator\View\Item;
+namespace FelizComPouco\Component\Fcp_guia\Administrator\View\Item;
 
 defined('_JEXEC') or die;
 

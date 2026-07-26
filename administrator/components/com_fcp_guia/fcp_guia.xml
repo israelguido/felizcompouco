@@ -5,7 +5,7 @@
 	<creationDate>2026-07</creationDate>
 	<version>1.0.0</version>
 	<description>COM_FCP_GUIA_XML_DESCRIPTION</description>
-	<namespace path="src">FelizComPouco\Component\Fcpguia</namespace>
+	<namespace path="src">FelizComPouco\Component\Fcp_guia</namespace>
 	<install>
 		<sql>
 			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>

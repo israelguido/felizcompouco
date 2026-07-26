@@ -7,7 +7,7 @@ use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 
-/** @var \FelizComPouco\Component\Fcpguia\Administrator\View\Items\HtmlView $this */
+/** @var \FelizComPouco\Component\Fcp_guia\Administrator\View\Items\HtmlView $this */
 
 $wa = $this->getDocument()->getWebAssetManager();
 $wa->useScript('table.columns')->useScript('multiselect');
