@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="details" label="COM_FCP_GUIA_FIELDSET_DETAILS">
+		<field
+			name="id"
+			type="text"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			default="0"
+			class="readonly"
+			readonly="true"
+		/>
+
+		<field
+			name="title"
+			type="text"
+			label="JGLOBAL_TITLE"
+			required="true"
+			filter="string"
+		/>
+
+		<field
+			name="alias"
+			type="text"
+			label="JFIELD_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC"
+			hint="JFIELD_ALIAS_PLACEHOLDER"
+			filter="string"
+		/>
+
+		<field
+			name="image"
+			type="media"
+			label="COM_FCP_GUIA_FIELD_IMAGE_LABEL"
+			description="COM_FCP_GUIA_FIELD_IMAGE_DESC"
+		/>
+
+		<field
+			name="image_alt"
+			type="text"
+			label="COM_FCP_GUIA_FIELD_IMAGE_ALT_LABEL"
+			filter="string"
+		/>
+
+		<field
+			name="url"
+			type="text"
+			label="COM_FCP_GUIA_FIELD_URL_LABEL"
+			description="COM_FCP_GUIA_FIELD_URL_DESC"
+			filter="string"
+			hint="https://… ou /caminho-interno"
+		/>
+
+		<field
+			name="introtext"
+			type="textarea"
+			label="COM_FCP_GUIA_FIELD_INTRO_LABEL"
+			rows="4"
+			filter="safehtml"
+		/>
+
+		<field
+			name="state"
+			type="list"
+			label="JSTATUS"
+			default="1"
+			class="form-select-color-state"
+			validate="options"
+			>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+		</field>
+
+		<field
+			name="ordering"
+			type="number"
+			label="JFIELD_ORDERING_LABEL"
+			default="0"
+			filter="integer"
+		/>
+
+		<field
+			name="created"
+			type="calendar"
+			label="JGLOBAL_FIELD_CREATED_LABEL"
+			translateformat="true"
+			showtime="true"
+			filter="user_utc"
+		/>
+
+		<field
+			name="created_by"
+			type="user"
+			label="JGLOBAL_FIELD_CREATED_BY_LABEL"
+			validate="UserId"
+		/>
+	</fieldset>
+</form>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>mod_fcp_guia</name>
+	<author>Feliz com Pouco</author>
+	<version>1.0.0</version>
+	<description>MOD_FCP_GUIA_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_fcp_guia">mod_fcp_guia.php</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+	<languages>
+		<language tag="pt-BR">language/pt-BR/mod_fcp_guia.ini</language>
+		<language tag="pt-BR">language/pt-BR/mod_fcp_guia.sys.ini</language>
+		<language tag="en-GB">language/en-GB/mod_fcp_guia.ini</language>
+		<language tag="en-GB">language/en-GB/mod_fcp_guia.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="count" type="number" default="8" label="MOD_FCP_GUIA_FIELD_COUNT_LABEL" min="1" max="50" />
+				<field name="show_title" type="radio" default="1" label="MOD_FCP_GUIA_FIELD_SHOW_TITLE_LABEL" layout="joomla.form.field.radio.switcher">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="title_limit" type="number" default="60" label="MOD_FCP_GUIA_FIELD_TITLE_LIMIT_LABEL" />
+				<field name="theme" type="text" default="style1" label="MOD_FCP_GUIA_FIELD_THEME_LABEL" />
+				<field name="nb_column0" type="number" default="3" label="MOD_FCP_GUIA_FIELD_COLS_DESKTOP" />
+				<field name="nb_column1" type="number" default="3" label="MOD_FCP_GUIA_FIELD_COLS_LAPTOP" />
+				<field name="nb_column2" type="number" default="2" label="MOD_FCP_GUIA_FIELD_COLS_TABLET" />
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
