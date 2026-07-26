@@ -71,6 +71,12 @@ jobs:
             php cli/joomla.php cache:clean || true
           fi
           find administrator/cache cache -type f ! -name 'index.html' ! -name 'autoload_psr4.php' -delete 2>/dev/null || true
+          if [ -d yt-assets ]; then
+            find yt-assets -type f ! -name 'index.html' -delete 2>/dev/null || true
+            echo "yt-assets limpo"
+          fi
+          touch templates/sj_vicmagz/css/fcp-home.css templates/sj_vicmagz/css/fcp-layout.css 2>/dev/null || true
+          echo "Cache limpo"
 
       - name: Confirmar Guia component
         working-directory: ${{ env.DEPLOY_PATH }}
