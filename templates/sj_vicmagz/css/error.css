@@ -28,7 +28,7 @@ body.fcp-error {
 	flex-direction: column;
 	font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 	color: var(--fcp-ink);
-	background: var(--fcp-cream);
+	background: #1a1520;
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 }
@@ -38,19 +38,24 @@ body.fcp-error {
 	inset: 0;
 	z-index: 0;
 	pointer-events: none;
-	background:
-		radial-gradient(ellipse 80% 55% at 50% -10%, rgba(208, 158, 211, 0.35), transparent 60%),
-		radial-gradient(ellipse 70% 50% at 100% 100%, rgba(145, 167, 208, 0.28), transparent 55%),
-		radial-gradient(ellipse 50% 40% at 0% 80%, rgba(208, 158, 211, 0.18), transparent 50%),
-		linear-gradient(180deg, #fbfafc 0%, #f3f0f6 100%);
+	background-color: #1a1520;
+	background-image: url("../images/404/bg-bailarina.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
 }
 
-.fcp-error__bg::after {
+.fcp-error__bg::before {
 	content: "";
 	position: absolute;
 	inset: 0;
-	opacity: 0.04;
-	background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2391a7d0' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+	background:
+		linear-gradient(180deg, rgba(247, 245, 248, 0.72) 0%, rgba(247, 245, 248, 0.78) 45%, rgba(243, 240, 246, 0.88) 100%),
+		radial-gradient(ellipse 70% 55% at 50% 0%, rgba(208, 158, 211, 0.22), transparent 65%);
+}
+
+.fcp-error__bg::after {
+	content: none;
 }
 
 .fcp-error__main {
