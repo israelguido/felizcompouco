@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" method="upgrade">
+	<name>COM_FCP_GUIA</name>
+	<author>Feliz com Pouco</author>
+	<creationDate>2026-07</creationDate>
+	<version>1.0.0</version>
+	<description>COM_FCP_GUIA_XML_DESCRIPTION</description>
+	<namespace path="src">FelizComPouco\Component\Fcpguia</namespace>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<administration>
+		<menu link="option=com_fcp_guia">COM_FCP_GUIA</menu>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<folder>forms</folder>
+			<folder>services</folder>
+			<folder>sql</folder>
+			<folder>src</folder>
+			<folder>tmpl</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="pt-BR">language/pt-BR/com_fcp_guia.ini</language>
+			<language tag="pt-BR">language/pt-BR/com_fcp_guia.sys.ini</language>
+			<language tag="en-GB">language/en-GB/com_fcp_guia.ini</language>
+			<language tag="en-GB">language/en-GB/com_fcp_guia.sys.ini</language>
+		</languages>
+	</administration>
+</extension>
