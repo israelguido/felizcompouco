@@ -65,29 +65,38 @@ $n = count($this->items);
 				<li class="item col-sm-12">
 					
 					
-					<?php $images  = json_decode($item->core_images);?>
-					<?php if ($this->params->get('tag_list_show_item_image', 1) == 1 && !empty($images->image_fulltext)) :?>
+					<?php $images  = json_decode($item->core_images); ?>
+					<?php if ($this->params->get('tag_list_show_item_image', 1) == 1 && !empty($images->image_intro)) : ?>
 							<?php
-							$imgfloat = (empty($images->float_fulltext)) ?  'none' :$images->float_fulltext; 
-							$imgW = (isset($leadingFlag) && $leadingFlag)?$templateParams->get('leading_width', '870'):$templateParams->get('intro_width', '200');
-							$imgH = (isset($leadingFlag) && $leadingFlag)?$templateParams->get('leading_height', '320'):$templateParams->get('intro_height', '200');
-							$imgsrc = YTTemplateUtils::resize($images->image_fulltext, $imgW, $imgH, array($templateParams->get('thumbnail_background', '#ffffff')));
-							
-							//Create placeholder items images
-							$src = $images->image_fulltext;
-							if (file_exists(JPATH_BASE . '/' . $src)) {								
-								$thumb_img = '<img src="'.$src.'" alt="'.$images->image_fulltext_alt.'" />';
-								$full_img =  JURI::base().'/'.htmlspecialchars($images->image_fulltext);
-							} else if ($is_placehold) {					
+							$imgClass = trim((string) ($images->float_intro ?? $images->float_into ?? ''));
+							$imgfloat = in_array($imgClass, ['left', 'right', 'none', ''], true)
+								? ($imgClass !== '' ? $imgClass : 'none')
+								: 'none';
+							$cssClass = (!in_array($imgClass, ['left', 'right', 'none', ''], true)) ? $imgClass : '';
+							$srcRaw = (string) $images->image_intro;
+							$srcClean = JHtml::_('cleanImageURL', $srcRaw);
+							$srcPath = is_object($srcClean) && !empty($srcClean->url) ? $srcClean->url : strtok($srcRaw, '#');
+							$srcPath = ltrim((string) $srcPath, '/');
+							// Sem YT resize — o cache do template gera thumbs pretos.
+							$imgsrc = JUri::root(true) . '/' . $srcPath;
+							$alt = trim((string) ($images->image_intro_alt ?? ''));
+							if ($alt === '' && empty($images->image_intro_alt_empty)) {
+								$alt = (string) $item->core_title;
+							}
+
+							$thumb_img = '';
+							if (is_file(JPATH_BASE . '/' . $srcPath) || strpos((string) $images->image_intro, 'http') === 0) {
+								$classAttr = $cssClass !== '' ? ' class="' . htmlspecialchars($cssClass, ENT_QUOTES, 'UTF-8') . '"' : '';
+								$thumb_img = '<img src="' . htmlspecialchars($imgsrc, ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($alt, ENT_QUOTES, 'UTF-8') . '"' . $classAttr . ' />';
+							} else if (!empty($is_placehold)) {
 								$thumb_img = yt_placehold($placehold_size['listing']);
-								$full_img  = 'http://placehold.it/'.$placehold_size['article'].'/969696';
-							}	
-							
+							}
 							?>
-							<figure class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image" >
+							<?php if ($thumb_img !== '') : ?>
+							<figure class="<?php echo htmlspecialchars(trim(($imgfloat !== 'none' ? 'pull-' . $imgfloat . ' ' : '') . ($cssClass ? $cssClass . ' ' : '') . 'item-image'), ENT_QUOTES, 'UTF-8'); ?>">
 									<?php echo $thumb_img; ?>
 							</figure>
-						
+							<?php endif; ?>
 					<?php endif; ?>
 					
 					<div class="article-text">

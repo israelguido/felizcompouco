@@ -19,6 +19,7 @@ migrations/
 /administrator/cache/
 /administrator/logs/
 /logs/
+/migration/
 
 # Uploads e mídia gerada
 /images/

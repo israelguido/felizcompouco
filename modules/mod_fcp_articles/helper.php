@@ -90,7 +90,10 @@ class ModFcpArticlesHelper
 			$item->numOfComments = 0;
 			$item->tags = '';
 			$item->fulltext = $item->fulltext ?: '';
-			$item->image = self::getImage($item);
+			$img = self::getIntroImage($item);
+			$item->image       = $img['src'];
+			$item->image_alt   = $img['alt'];
+			$item->image_class = $img['class'];
 			$item->displaytitle = self::truncate($item->title, $titleLimit);
 			$item->displayIntrotext = self::truncate(strip_tags($item->introtext), $introLimit);
 			$item->introtext = $item->displayIntrotext;
@@ -144,33 +147,97 @@ class ModFcpArticlesHelper
 		return array_values(array_unique($all));
 	}
 
-	public static function getImage($item): string
+	/**
+	 * Thumbnail = apenas "Imagem da Introdução" do artigo.
+	 * alt = descrição alternativa; class = campo Classe CSS (float_intro no Joomla 6).
+	 *
+	 * @return array{src:string,alt:string,class:string}
+	 */
+	public static function getIntroImage($item): array
 	{
 		$images = json_decode($item->images ?: '{}');
-		$src = '';
+		$empty  = ['src' => '', 'alt' => '', 'class' => ''];
 
-		if (!empty($images->image_intro)) {
-			$src = $images->image_intro;
-		} elseif (!empty($images->image_fulltext)) {
-			$src = $images->image_fulltext;
-		} elseif (preg_match('/<img[^>]+src=["\']([^"\']+)["\']/i', $item->introtext . $item->fulltext, $m)) {
-			$src = $m[1];
+		if (!is_object($images) || empty($images->image_intro)) {
+			return $empty;
 		}
 
+		$src = (string) $images->image_intro;
+
+		// Joomla 4+/6 media: path#joomlaImage://...
+		if (strpos($src, '#') !== false) {
+			$cleaned = HTMLHelper::_('cleanImageURL', $src);
+			$src = is_object($cleaned) && !empty($cleaned->url) ? (string) $cleaned->url : strtok($src, '#');
+		}
+
+		$src = trim($src);
 		if ($src === '') {
-			return '';
+			return $empty;
 		}
 
-		// Drop broken local paths so layouts can skip them
 		if (strpos($src, 'http') !== 0 && strpos($src, '//') !== 0) {
 			$rel = ltrim(preg_replace('#^' . preg_quote(Uri::root(true), '#') . '/#', '', $src), '/');
 			if ($rel !== '' && !is_file(JPATH_ROOT . '/' . $rel)) {
-				return '';
+				return $empty;
 			}
 			$src = Uri::root(true) . '/' . $rel;
 		}
 
-		return $src;
+		$alt = trim((string) ($images->image_intro_alt ?? ''));
+		if ($alt === '' && empty($images->image_intro_alt_empty)) {
+			$alt = (string) ($item->title ?? '');
+		}
+
+		// No Joomla 6 o campo "Classe CSS" grava em float_intro (legado: float_into)
+		$class = trim((string) ($images->float_intro ?? $images->float_into ?? ''));
+		$class = preg_replace('/[^a-zA-Z0-9_\-\s]/', '', $class) ?: '';
+
+		return [
+			'src'   => $src,
+			'alt'   => $alt,
+			'class' => $class,
+		];
+	}
+
+	/** @deprecated Use getIntroImage() */
+	public static function getImage($item): string
+	{
+		return self::getIntroImage($item)['src'];
+	}
+
+	/**
+	 * Renderiza <img> da introdução com alt e class do artigo.
+	 */
+	public static function renderIntroImg($item, array $extraAttrs = []): string
+	{
+		$src = (string) ($item->image ?? '');
+		if ($src === '') {
+			return '';
+		}
+
+		$attrs = array_merge([
+			'src' => $src,
+			'alt' => (string) ($item->image_alt ?? $item->title ?? ''),
+		], $extraAttrs);
+
+		$class = trim((string) ($item->image_class ?? ''));
+		if ($class !== '') {
+			$attrs['class'] = trim(($attrs['class'] ?? '') . ' ' . $class);
+		}
+
+		$html = '<img';
+		foreach ($attrs as $name => $value) {
+			if ($value === null || $value === false || $value === '') {
+				continue;
+			}
+			if (!preg_match('/^[a-zA-Z][a-zA-Z0-9_:.-]*$/', (string) $name)) {
+				continue;
+			}
+			$html .= ' ' . $name . '="' . htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8') . '"';
+		}
+		$html .= ' />';
+
+		return $html;
 	}
 
 	public static function truncate($text, $limit)

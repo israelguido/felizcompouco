@@ -25,9 +25,9 @@ $titleLim  = (int) $params->get('title_limit', 60);
 				<div class="moduleItemImageBlock">
 					<a class="moduleItemImage" href="<?php echo $item->link; ?>" title="<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>">
 						<?php if ($item->image) : ?>
-							<img src="<?php echo htmlspecialchars($item->image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>" />
+							<?php echo ModFcpArticlesHelper::renderIntroImg($item); ?>
 						<?php else : ?>
-							<?php echo yt_placehold($placehold_size['large'] ?? '770x540', $item->title, $item->title); ?>
+							<?php echo yt_placehold($placehold_size['large'] ?? '770x540', $item->title, $item->image_alt ?: $item->title); ?>
 						<?php endif; ?>
 					</a>
 				</div>

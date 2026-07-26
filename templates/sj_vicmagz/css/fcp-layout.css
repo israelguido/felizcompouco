@@ -618,12 +618,22 @@ body:not(.homepage) #content #content_main {
 	}
 }
 
-/* Artigo individual — tipografia e imagens estáveis */
-.item-page .article-fullimage,
-.item-page .pull-left.item-image,
-.item-page .pull-right.item-image {
+/* Artigo: imagem de introdução no topo */
+.item-page .img-intro,
+.item-page .img-fulltext.img-intro {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	margin: 0 0 24px;
+	float: none;
+}
+.item-page .img-intro img {
+	display: block;
+	width: 100%;
+	height: auto;
 	max-width: 100%;
 }
+
 @media (max-width: 767px) {
 	.item-page .pull-left.item-image,
 	.item-page .pull-right.item-image {

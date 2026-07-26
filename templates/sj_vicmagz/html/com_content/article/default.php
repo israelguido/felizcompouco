@@ -43,23 +43,10 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 		<div class="clearfix"> </div>
 	<?php endif; ?>
 	
-	<?php  if (isset($images->image_fulltext) and !empty($images->image_fulltext)) :
-		
-		//Create placeholder items images
-		$src = $images->image_fulltext;
-		if (file_exists(JPATH_BASE . '/' . $src) || strpos($src,'http://')!== false) {								
-			$thumb_img = '<img src="'.$src.'" alt="'.$images->image_fulltext_alt.'" />';
-		} else if ($is_placehold) {					
-			$thumb_img = yt_placehold($placehold_size['article']);
-		}	
+	<?php
+	// Primeira imagem do artigo = sempre Imagem da Introdução (thumbnail do post)
+	echo JLayoutHelper::render('joomla.content.article_intro_image', $this->item);
 	?>
-	<?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
-	<figure class="img-fulltext pull-<?php echo htmlspecialchars($imgfloat); ?>">
-		<a  href="<?php echo $this->item->readmore_link; ?>" title="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>">	
-			<?php echo $thumb_img; ?>
-		</a>	
-	</figure>
-	<?php endif; ?>
 		<?php if ($params->get('show_title') || $params->get('show_author')) : ?>
 		<header class="article-header">
 			<h2>

@@ -17,9 +17,9 @@ $titleLim  = (int) $params->get('title_limit', 25);
 				<div class="moduleItemImageBlock pull-left">
 					<a class="moduleItemImage" href="<?php echo $item->link; ?>">
 						<?php if ($item->image) : ?>
-							<img src="<?php echo htmlspecialchars($item->image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>" />
+							<?php echo ModFcpArticlesHelper::renderIntroImg($item); ?>
 						<?php elseif (!empty($is_placehold)) : ?>
-							<?php echo yt_placehold($placehold_size['xsmall'] ?? '90x62', $item->title, $item->title); ?>
+							<?php echo yt_placehold($placehold_size['xsmall'] ?? '90x62', $item->title, $item->image_alt ?: $item->title); ?>
 						<?php endif; ?>
 					</a>
 				</div>

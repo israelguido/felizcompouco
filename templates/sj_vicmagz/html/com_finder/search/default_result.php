@@ -48,6 +48,12 @@ if ($show_description) {
 
 $route = $this->result->route ? Route::_($this->result->route) : '#';
 $image = !empty($this->result->imageUrl) ? $this->result->imageUrl : '';
+$imageAlt = '';
+if (!empty($this->result->imageAlt)) {
+	$imageAlt = (string) $this->result->imageAlt;
+} elseif (!empty($this->result->title)) {
+	$imageAlt = (string) $this->result->title;
+}
 
 $category = '';
 $taxonomies = method_exists($this->result, 'getTaxonomy') ? $this->result->getTaxonomy() : [];
@@ -70,7 +76,7 @@ if ($readMore === 'COM_CONTENT_READ_MORE') {
 		<div class="fcp-finder__thumb">
 			<a href="<?php echo $route; ?>" tabindex="-1" aria-hidden="true">
 				<img src="<?php echo htmlspecialchars($image, ENT_QUOTES, 'UTF-8'); ?>"
-					 alt=""
+					 alt="<?php echo htmlspecialchars($imageAlt, ENT_QUOTES, 'UTF-8'); ?>"
 					 loading="lazy"
 					 width="220"
 					 height="150">

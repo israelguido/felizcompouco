@@ -58,9 +58,7 @@ $owlUrl = $base . '/js/owl.carousel.js';
 						<div class="item-wrap-inner">
 							<div class="item-image">
 								<a href="<?php echo $item->link; ?>">
-									<img src="<?php echo htmlspecialchars($item->image, ENT_QUOTES, 'UTF-8'); ?>"
-										 alt="<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>"
-										 loading="eager" />
+									<?php echo ModFcpArticlesHelper::renderIntroImg($item, ['loading' => 'eager']); ?>
 								</a>
 							</div>
 							<div class="item-info">

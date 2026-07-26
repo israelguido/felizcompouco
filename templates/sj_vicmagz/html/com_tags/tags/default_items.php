@@ -85,13 +85,24 @@ $n = count($this->items);
 			<?php $images  = json_decode($item->images); ?>
 					<span class="tag-image-intro">
 					<?php if (!empty($images->image_intro)): ?>
-						<?php $imgfloat = (empty($images->float_intro)) ? $this->params->get('float_intro') : $images->float_intro; ?>
-						<div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image">
-							<img
-						<?php if ($images->image_intro_caption) : ?>
-							<?php echo 'class="caption"' . ' title="' . htmlspecialchars($images->image_intro_caption) . '"'; ?>
-						<?php endif; ?>
-						src="<?php echo $images->image_intro; ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>"/>
+						<?php
+						$imgClass = trim((string) ($images->float_intro ?? ''));
+						$alt = trim((string) ($images->image_intro_alt ?? ''));
+						if ($alt === '' && empty($images->image_intro_alt_empty)) {
+							$alt = (string) $item->title;
+						}
+						$srcClean = JHtml::_('cleanImageURL', $images->image_intro);
+						$src = is_object($srcClean) && !empty($srcClean->url) ? $srcClean->url : strtok($images->image_intro, '#');
+						$classAttr = '';
+						if ($imgClass !== '' && !in_array($imgClass, ['left', 'right', 'none'], true)) {
+							$classAttr = ' class="' . htmlspecialchars($imgClass, ENT_QUOTES, 'UTF-8') . '"';
+						} elseif (!empty($images->image_intro_caption)) {
+							$classAttr = ' class="caption" title="' . htmlspecialchars($images->image_intro_caption, ENT_QUOTES, 'UTF-8') . '"';
+						}
+						?>
+						<div class="item-image<?php echo in_array($imgClass, ['left', 'right'], true) ? ' pull-' . htmlspecialchars($imgClass, ENT_QUOTES, 'UTF-8') : ''; ?>">
+							<img<?php echo $classAttr; ?>
+						src="<?php echo htmlspecialchars($src, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($alt, ENT_QUOTES, 'UTF-8'); ?>"/>
 						</div>
 					<?php endif; ?>
 					</span>

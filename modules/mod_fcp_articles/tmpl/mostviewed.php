@@ -21,7 +21,7 @@ $tag_id    = 'sj_mostviewed_' . (int) $module->id;
 							<div class="tab-item-first">
 								<?php if ($item->image) : ?>
 									<a title="<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>" href="<?php echo $item->link; ?>">
-										<img src="<?php echo htmlspecialchars($item->image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>" />
+										<?php echo ModFcpArticlesHelper::renderIntroImg($item); ?>
 									</a>
 								<?php endif; ?>
 								<span class="count-item"><?php echo $i + 1; ?></span>
@@ -39,7 +39,7 @@ $tag_id    = 'sj_mostviewed_' . (int) $module->id;
 									<div class="tab-content-left-img">
 										<?php if ($item->image) : ?>
 											<a href="<?php echo $item->link; ?>">
-												<img src="<?php echo htmlspecialchars($item->image, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item->title, ENT_QUOTES, 'UTF-8'); ?>" />
+												<?php echo ModFcpArticlesHelper::renderIntroImg($item); ?>
 											</a>
 										<?php endif; ?>
 									</div>
